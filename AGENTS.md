@@ -14,8 +14,31 @@ Before doing anything else:
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+5. **If in a PROJECT topic/thread:** Read the relevant project file from `projects/` immediately. The Decisions Log in that file is the only reliable source of truth — session history resets, files don't.
 
 Don't ask permission. Just do it.
+
+### 📋 Project File Protocol (Critical)
+
+- **Every decision gets written to the project file in the same turn it's made.** Not later. Not assumed to persist in chat.
+- Decisions made verbally or in other sessions must be captured the moment they're referenced.
+- If something isn't in the project file, it doesn't exist as far as future sessions are concerned.
+- Session resets are inevitable. File-based memory is not.
+
+### 🔄 Session Load Protocol (Mandatory — No Exceptions)
+
+**At the start of EVERY conversation — before responding to anything — read:**
+1. The relevant project file (if in a project topic/thread)
+2. Today's daily note (`memory/YYYY-MM-DD.md`)
+3. Yesterday's daily note if today's doesn't exist yet
+
+**This is non-negotiable.** Alistair must never have to:
+- Re-explain project status
+- Re-paste decisions already made
+- Re-state what step we're on
+- Remind you of context from a prior session
+
+If you are not current before the first reply, you are failing at the job. Read first. Always.
 
 ## Memory
 

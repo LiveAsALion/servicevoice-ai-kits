@@ -79,9 +79,11 @@ Two cron jobs run at 2am and 3am daily (redundant — in case one misfires):
 
 ## Lessons Learned (Updated Over Time)
 - BOOTSTRAP.md should be deleted after first-run initialization — its presence means setup was incomplete
-- Project files referenced in MEMORY.md must actually exist on disk — ghost references are useless
+- Project files referenced in MEMORY.md must actually exist on disk — ghost references are useless; create stubs at init
 - Nightly automation is the compounding advantage; without it, each session starts from zero
 - Complexity for its own sake is noise — don't add systems until a real limit is hit
+- A heartbeat system without HEARTBEAT.md is a timer that burns money — create the file at workspace initialization
+- HEARTBEAT.md should be created as part of any workspace bootstrap, not added reactively weeks later
 
 ## Reference Points (Don't Recap — Just Use)
 - *Beyond OODA* by Varg Freeborn — read it
