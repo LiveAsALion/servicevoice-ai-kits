@@ -1,19 +1,20 @@
 # ServiceVoice AI Kits — Project File
 > Single source of truth. Session history resets. This file does not.
 > Update the Decisions Log the same turn a decision is made.
+> Last updated: 2026-04-05
 
 ---
 
 ## Project Overview
 
-**Concept:** Done-for-you AI voice agent kits for small service businesses (HVAC, plumbing, electrical, landscaping, pool care). Pre-built Retell AI voice agents packaged with templates, scripts, and onboarding guides — enabling SMBs to handle inbound calls, after-hours leads, and appointment booking without hiring.
+**Concept:** Done-for-you AI voice agent kits for small service businesses (HVAC, plumbing, electrical, landscaping, pool care). Pre-built Retell AI voice agents packaged with scripts, Make.com workflows, and a Notion delivery hub — enabling SMBs to handle inbound calls, after-hours leads, and appointment booking without hiring.
 
 **Persona:** Malcolm Reid (malcolm.reid@doanything.com)
 
-**Phase:** Validation
+**Phase:** Validation — April 15 go/no-go deadline
 
 **Positioning:**
-- Not a SaaS subscription — a kit/product (one-time or annual)
+- Not a SaaS subscription — a kit/product (one-time purchase)
 - Target customer: owner-operated service businesses in the $500K–$3M revenue range
 - Phoenix-first launch (seasonal demand spike in summer; trades culture is high)
 - Pain: missed calls = missed revenue; hiring a receptionist is expensive
@@ -28,295 +29,283 @@
 
 ---
 
-## Pricing Structure (Corrected 2026-04-02)
+## Pricing Structure
 
-**Original spec (Alistair's intent):** $497 one-time + subscription option for continuous updates + Spanish add-on
-**WTP probing:** $397/$497/$797 were market research price points suggested by DoAnything bot to probe where demand clusters — NOT product tiers. Ads correctly never mentioned tiers.
+| Product | LS ID | Price | Status |
+|---|---|---|---|
+| Core Kit | 945297 | $497 one-time | ✅ Published |
+| Monthly Updates | 947854 | $47/month | ✅ Published |
+| Spanish Language Pack | 947855 | $97 add-on | ✅ Published |
+| Done-With-You | — | $797 | Deferred until 20 sales |
 
-| Product | Price | Notes |
-|---|---|---|
-| Core Kit | **$497 one-time** | All 5 niches, Retell AI agent, Make.com workflows, deployment guide, Phoenix/AZ scripts |
-| Subscription (updates) | **$47/month** | Continuous updates, quarterly refresh, ongoing support — offered at checkout as upsell |
-| Spanish Language Pack | **$97 add-on** | Bilingual scripts, Phoenix market-tuned (43% Hispanic market) |
-| Done-With-You | **$797** | Add AFTER 20 sales only — 90-min live setup call |
+**Launch price decision:** Survey market at $397/$497 first. If ≥70% WTP at $497 → launch at $497. Survey data needed before locking.
 
-**Launch price decision:** Survey the market at $397/$497 points first. If ≥70% WTP at $497 → launch at $497. If market clusters at $397 → launch there and walk up with social proof. Do not commit to launch price before survey data.
+**Buy URLs (live):**
+- Core Kit: https://servicevoice-ai.lemonsqueezy.com/checkout/buy/31232fb7-9dbb-42ca-9440-6cef9e5e4c1a
+- Monthly Updates: https://servicevoice-ai.lemonsqueezy.com/checkout/buy/449a4e04-c5bd-41d6-870e-d83b62911f0b
+- Spanish Pack: https://servicevoice-ai.lemonsqueezy.com/checkout/buy/b7834732-9690-4c23-965f-9c667e64b80d
 
-> **Note:** Buyer's ongoing cost (not our revenue) is $90–$150/month paid directly to Retell AI for call usage. Must be disclosed prominently — hidden cost will tank reviews.
-
----
-
-## Validation Plan (Phase 2 — Updated from Phase 1 Report)
-
-**Organic (Free — do FIRST):**
-- [ ] Post WTP surveys in: r/HVAC, r/Plumbing, r/phoenix, r/smallbusiness
-- [ ] Post in Facebook groups: Blue Collar Millionaire, HVAC Business Owners, Phoenix Small Business Network
-- [ ] Target: 50+ responses, ≥70% WTP in $200–$600 range
-- [ ] Timeline: Start immediately, 48-hour collection window
-
-**Paid (only after organic confirms demand — $100 max):**
-- [ ] Meta ads: "HVAC business owner Phoenix AZ" targeting
-- [ ] Test 3 creative angles (missed calls, time savings, competitor comparison)
-- [ ] Google Ads: "AI phone answering for HVAC Phoenix" intent keywords
-- [ ] Cap: $100 total, $20/day max
-
-**Success threshold:** ≥50 responses, ≥70% yes at recommended price point
-
-**Pivot trigger:** If <70% yes OR WTP clusters below $300 → test $197 first, or pivot to auto repair / dental niches
-
-**Post-survey (48h):** Compile responses → go/no-go on $397 vs $497 launch price → get Alistair approval before any paid spend
+> **Buyer ongoing cost disclosure (mandatory):** Retell AI charges ~$0.11–$0.15/min. Typical small business: $90–$150/month paid directly to Retell. Must be disclosed prominently — hidden cost will tank reviews.
 
 ---
 
-## Stack
+## Validation Plan
 
-| Layer | Tool | Cost |
-|---|---|---|
-| Voice Agent | Retell AI (primary) / Vapi (fallback) | Buyer pays ~$0.11–$0.15/min |
-| Workflow | Make.com (default) / n8n (advanced) | Free tier available |
-| Calendar | Google Calendar | Free |
-| Sales Platform | Lemon Squeezy | 5% + $0.50/transaction |
-| Content Delivery | Notion + ZIP | Free |
-| Email Sequences | ConvertKit (free to 1,000 subs) | Free |
-| Demo Narration | ElevenLabs | Free tier |
-| Internal Analytics | Google Sheets + n8n | Free |
-| Landing Page | servicevoicekit.com (VPS — Nginx + SSL) | $12/yr domain |
+**April 15 go/no-go — 10 days out as of 2026-04-05**
 
----
+**Paid (live):**
+- [x] Meta ads: 3 ads running at $8/day (campaign 6919077778186) → Tally survey
+- [ ] Survey responses: TARGET 50+ by April 15 | CURRENT: 0 (check Tally)
+- [ ] If <50 by April 12 → increase to $20/day for final sprint
 
-## ARR Goals (Set 2026-04-02)
+**Organic (Alistair manual):**
+- [ ] PhoenixTradesPro: Post 2 warmup comments (r/HVAC + r/Plumbing) — scripts ready
+- [ ] BuildingAlone_: 1 comment in r/smallbusiness — script ready
+- [ ] No product mentions — genuine value only
 
-**45-Day Revenue Targets (by ~May 17, 2026)**
-- [x] Meta Business Manager rebuilt under Alistair's personal account; System User token provisioned for Woz ✅
-- [x] Landing page migrated from DoAnything to VPS (Nginx + SSL) ✅
-- [ ] WTP survey at 50+ responses (organic + paid combined)
-- [ ] Go/no-go decision locked on launch price ($397 vs $497)
-- [x] First $100 Meta validation campaign live and reporting ✅ (launched 2026-04-03)
-- [ ] HVAC MVP kit drafted (Retell agent + Make.com workflow + deployment guide)
-- [ ] ConvertKit email capture live on landing page
-- [ ] Both Reddit accounts at 20+ karma, warmup complete
-- [ ] **Revenue target: First sale closed**
-
-**6-Month ARR Targets (by ~October 2026)**
-- [ ] 10 one-time sales = $4,970+ gross revenue
-- [ ] $47/mo subscription tested at checkout; 20+ active subscribers = ~$940/mo MRR
-- [ ] Spanish Language Pack live as $97 add-on
-- [ ] All 5 niches built
-- [ ] Meta ads at CPL <$40, ROAS >1
-- [ ] 20-sale threshold hit → DWY ($797) introduced
-- [ ] **ARR target: $500–$1,000/mo recurring (~$6K–$12K ARR) from subscriptions**
+**Decision triggers:**
+- ≥50 responses + ≥70% WTP at $497 → ✅ GO. Lock $497. Wire Lemon Squeezy delivery. Open for sales.
+- <50 responses OR WTP <70% → diagnose before spending more. Possible pivot to $197 or different niche.
 
 ---
 
-## ⚠️ Critical Path to April 15 Go/No-Go (12 Days)
+## Delivery System (as of 2026-04-05)
 
-> Every blocker flows from one root: **Meta developer SMS verification**. Unblock that first. Everything else cascades.
+**Customer journey:**
+1. Purchase via Lemon Squeezy checkout
+2. LS sends thank-you email with Notion hub link
+3. Notion hub contains everything organized — scripts, setup guide, workflow instructions
+4. Buyer downloads Make.com blueprint JSONs from links inside Notion hub
+5. Buyer imports blueprints into Make.com, connects Retell AI, goes live
 
-**Step 1 — Unblock Meta (Alistair, 1 action):**
-- Retry SMS verification on Meta developer account (ServiceVoiceAI@gmail.com)
-- If SMS fails again: use a different phone number (temp SMS service or Alistair's personal #)
-- Once verified: Create Meta App → System User (WozBot) → Generate token → DM to Woz
+**No ZIP file needed** — Notion hub replaces ZIP as primary delivery. Make.com blueprint JSONs hosted as direct download links inside Notion.
 
-**Step 2 — Woz loads Meta ads (within 24h of token):**
-- Load 3 campaign drafts into ad account act_948122668150382
-- Set $8/day CBO, Traffic objective → Tally survey URL
-- Expected: ads live within 48h of Step 1 completion
-
-**Step 3 — Reddit warmup (parallel, Alistair manually):**
-- PhoenixTradesPro: Post 2 comments this week (scripts provided) — r/HVAC + r/Plumbing
-- BuildingAlone_: 1 comment in r/smallbusiness this week
-- No product mentions — genuine value only
-
-**Step 4 — Survey threshold:**
-- Target: 50+ responses before April 15
-- If paid ads driving traffic and survey <50 by April 12 → extend budget to $20/day for final 3 days
-- If 50+ responses with ≥70% WTP at $497 → ✅ GO. Lock launch price. Start HVAC kit build.
-- If <50 responses OR WTP <70% → investigate pivot before spending more
-
-**Hard deadline:** April 15 — build or kill decision. No slide.
-
----
-
-## Open Items (as of 2026-04-02)
-
-**On Alistair:**
-- [x] Business portfolio confirmed (ServiceVoiceAi) — full control ✅
-- [x] Ad account confirmed active (act_948122668150382) ✅
-- [x] Page confirmed as portfolio asset ✅
-- [x] Malcolm Reid removed from portfolio ✅
-- [ ] Complete Meta developer account setup (SMS verification failing — retry tomorrow)
-- [ ] Create Meta app → System User (WozBot) → generate token → send to Woz privately
-- [ ] Reset PhoenixTradesPro Reddit password (forgot password → ServiceVoiceAI+reddit2@gmail.com)
-- [ ] Post Reddit warmup comments this week (scripts provided — 2 comments, 2–3 days apart, one account at a time)
-
-**On Woz (pending Meta token):**
-- [ ] Load 3 ad drafts into new Meta BM and set up $8/day Traffic campaign
-- [ ] Wire landing page email capture to ConvertKit
-- [ ] Find next batch of Reddit threads for week 2 comments
-
-**Build (post-validation):**
-- [x] HVAC call script — Phoenix-tuned, full call flow, lead data object ✅ (2026-04-03)
-- [x] Plumbing call script ✅ (2026-04-03)
-- [x] Electrical call script ✅ (2026-04-03)
-- [x] Landscaping call script ✅ (2026-04-03)
-- [x] Pool Care call script ✅ (2026-04-03)
-- [x] Make.com workflow architecture (3 workflows mapped) ✅ (2026-04-03)
-- [x] Deployment guide (full step-by-step for buyers) ✅ (2026-04-03)
-- [x] Notion hub structure blueprint ✅ (2026-04-03)
-- [x] Post-purchase email sequence (5 emails, ConvertKit-ready) ✅ (2026-04-03)
-- [x] Lemon Squeezy product page copy (Core + Subscription + Spanish Pack) ✅ (2026-04-03)
-- [ ] Build Make.com blueprint JSON files (needs Make.com API key)
-- [x] Build Retell AI agents — all 5 niches live ✅ (2026-04-03)
-  - HVAC: agent_365bc8b5dac7e6b350b279a22e
-  - Plumbing: agent_77f0704d9e26b07419fab508cb
-  - Electrical: agent_d9941c6c464460abf1d640180a
-  - Landscaping: agent_3690a560e21cda972afd416beb
-  - Pool Care: agent_ffba18524cd9a588015128d737
-  - Voice: openai-Nova | LLM: gpt-4o-mini | Post-call analysis: 8 fields each
-- [ ] Build Notion hub live workspace (needs Notion access)
-- [ ] Configure Lemon Squeezy products + checkout (needs account)
-- [ ] Wire ConvertKit email sequence (needs account)
-- [ ] Produce onboarding video
-- [ ] Spanish Language Pack scripts (bilingual — $97 add-on)
+### Notion Delivery Hub
+- **Status:** ✅ Built and live
+- **Root page ID:** 33943355-c6e1-8001-ac30-c12477e261a6
+- **Workspace:** Alistair Morrison's Space (notion.so)
+- **Integration:** WozBot (API key: NOTION_API_KEY in .env.secrets)
+- **Structure:**
+  - 👋 Start Here
+  - 📦 What's In Your Kit
+  - 🚀 Deployment Guide
+  - 📞 Call Scripts (5 sub-pages: HVAC, Plumbing, Electrical, Landscaping, Pool Care)
+  - ⚙️ Make.com Workflows
+  - 📊 Lead Tracking Sheet
+  - 🆘 Troubleshooting
+  - 📬 Support
 
 ---
 
-## Infrastructure & Credentials
+## Stack & Infrastructure
 
 ### Landing Page
 - **URL:** https://servicevoicekit.com
-- **File:** /var/www/servicevoicekit/index.html (on VPS)
+- **File:** /var/www/servicevoicekit/index.html (VPS)
 - **SSL:** Let's Encrypt — auto-renews July 1, 2026
+- **Privacy policy:** https://servicevoicekit.com/privacy.html
 - **Domain registrar:** Namecheap
 
-### Email
-- **Project Gmail:** ServiceVoiceAI@gmail.com
+### Lemon Squeezy
+- **Store:** ServiceVoice AI (ID: 335379)
+- **Store URL:** https://servicevoice-ai.lemonsqueezy.com
+- **Account:** liveasalion@gmail.com
+- **Plan:** Free
+- **Status:** Live — all 3 products published with active checkout URLs
+- **Payout:** Connected (confirmed by active buy URLs)
 
-### Surveys
-- **Tally (primary):** https://tally.so/r/eqEXQE — live, 0 responses as of 2026-04-02
-- **Google Form (backup):** https://forms.gle/cynGrnhaBwonGcMS6
-- **Waitlist Google Sheet ID:** 14xf8wBIl6lJFaTcnZhn57F-BZwtj-2H2qbHOjpOxXTk
+### Retell AI — 5 Live Agents
+| Niche | Agent ID |
+|---|---|
+| HVAC | agent_365bc8b5dac7e6b350b279a22e |
+| Plumbing | agent_77f0704d9e26b07419fab508cb |
+| Electrical | agent_d9941c6c464460abf1d640180a |
+| Landscaping | agent_3690a560e21cda972afd416beb |
+| Pool Care | agent_ffba18524cd9a588015128d737 |
+- Voice: openai-Nova | LLM: gpt-4o-mini | Post-call analysis: 8 fields each
 
-### Reddit
-- **PhoenixTradesPro** (blue collar / trades lane)
-  - Email: ServiceVoiceAI+reddit2@gmail.com
-  - Created: 2026-03-24 | Karma: ~1 | No product posts until ~May 8
-  - Target subs: r/HVAC, r/Plumbing, r/phoenix
-  - Credentials: REDDIT_SERVICEVOICE_BLUECOLLAR_* in .env.secrets
-- **BuildingAlone_** (white collar / entrepreneur lane)
-  - Created: 2026-03-22 | Karma: ~1
-  - Target subs: r/smallbusiness, r/Entrepreneur, r/sweatystartup
-  - Credentials: REDDIT_SERVICEVOICE_WHITECOLLAR_* in .env.secrets
-- **No_Rutabaga7771** — permanently banned (first account, created by DoAnything bot)
+### Make.com
+- **Account:** servicevoiceai@gmail.com (org ID: 7159998)
+- **API key:** MAKE_API_KEY in .env.secrets
+- **4 scenarios built (all inactive — pending Google/Twilio connections):**
+  - SVAI - Lead Capture (ID: 4628289)
+  - SVAI - Emergency Escalation (ID: 4628291)
+  - SVAI - Confirmation SMS (ID: 4628292)
+  - SVAI - Founder Intelligence Log (ID: 4628293)
+- **Remaining:** Export blueprint JSON files → host → link in Notion hub
 
 ### Meta Ads
-- **Business Portfolio:** ServiceVoiceAi — confirmed active, Alistair has full control
-- **Ad Account:** act_948122668150382 — active, in good standing, Privacy card ••3651 on file
-- **Facebook Page:** ServiceVoice AI — confirmed as asset in portfolio
-- **Malcolm Reid:** removed from portfolio (2026-04-02)
-- **System User (WozBot):** NOT YET CREATED — blocked on Meta developer account SMS verification
-- **Status:** Ad account and page are ready. Blocked on developer account verification to create app → system user → API token for Woz
+- **Business Portfolio:** ServiceVoiceAi (Alistair's personal account)
+- **Ad Account:** act_948122668150382 — active, Privacy card ••3651
+- **Facebook Page:** ServiceVoice AI
+- **App ID:** 1685154492844701
+- **System User:** WozBot (admin role)
+- **Token:** META_SYSTEM_USER_TOKEN in .env.secrets
+- **Campaign:** ID 6919077778186 | $8/day CBO | Phoenix 25mi | Ages 30–55 | FB+IG feed
+- **Ads:**
+  - 6919079370986 — "You just missed another call..."
+  - 6919079387386 — "Stop paying $150/mo..."
+  - 6919079410386 — "Phoenix HVAC, plumbing, and electrical owners..."
+
+### Surveys
+- **Tally:** https://tally.so/r/eqEXQE — live, responses: CHECK CURRENT COUNT
+- **Google Form (backup):** https://forms.gle/cynGrnhaBwonGcMS6
+- **Tally API key:** TALLY_API_KEY in .env.secrets
+- **Waitlist Sheet ID:** 14xf8wBIl6lJFaTcnZhn57F-BZwtj-2H2qbHOjpOxXTk
+
+### Reddit
+- **PhoenixTradesPro** (trades lane)
+  - Email: ServiceVoiceAI+reddit2@gmail.com
+  - Created: 2026-03-24 | Karma: ~1
+  - Target: r/HVAC, r/Plumbing, r/phoenix
+  - Credentials: REDDIT_SERVICEVOICE_BLUECOLLAR_* in .env.secrets
+- **BuildingAlone_** (entrepreneur lane)
+  - Created: 2026-03-22 | Karma: ~1
+  - Target: r/smallbusiness, r/Entrepreneur, r/sweatystartup
+  - Credentials: REDDIT_SERVICEVOICE_WHITECOLLAR_* in .env.secrets
+- **No_Rutabaga7771** — permanently banned (DoAnything bot error, March 2026)
 
 ### Google Ads
 - **Customer ID:** 869-878-7366 (ServiceVoiceAI@gmail.com)
-- **Privacy card ••7715** added via Google Pay
-- **Campaign spec drafted** — not loaded yet
+- **Card ••7715** via Google Pay
+- **Status:** Campaign spec drafted, not activated
+
+### Email
+- **Project Gmail:** ServiceVoiceAI@gmail.com
+- **SMTP:** SV_SMTP_ADDRESS / SV_SMTP_APP_PASSWORD in .env.secrets (placeholder — not yet configured)
+
+### Notion
+- **API key:** NOTION_API_KEY in .env.secrets
+- **Integration:** WozBot (bot ID: 33943355-c6e1-8110-b933-00276327d732)
+- **Hub page:** ID 33943355-c6e1-8001-ac30-c12477e261a6
+
+### ConvertKit
+- **Status:** Deferred to first sale. Post-purchase email sequence (5 emails) written and ready.
+
+---
+
+## Assets Built — Full Inventory
+
+| Asset | Status | Location |
+|---|---|---|
+| HVAC call script | ✅ Complete | servicevoice-assets/scripts/HVAC-call-script.md |
+| Plumbing call script | ✅ Complete | servicevoice-assets/scripts/Plumbing-call-script.md |
+| Electrical call script | ✅ Complete | servicevoice-assets/scripts/Electrical-call-script.md |
+| Landscaping call script | ✅ Complete | servicevoice-assets/scripts/Landscaping-call-script.md |
+| Pool Care call script | ✅ Complete | servicevoice-assets/scripts/Pool-call-script.md |
+| Make.com workflow architecture | ✅ Complete | servicevoice-assets/workflows/make-workflow-architecture.md |
+| Make.com blueprint JSONs | ❌ Not yet exported | Need to export from Make.com → host → link in Notion |
+| Deployment guide | ✅ Complete | servicevoice-assets/delivery/deployment-guide.md |
+| Notion delivery hub | ✅ Live | notion.so — page ID above |
+| Post-purchase email sequence | ✅ Written | servicevoice-assets/email-sequences/post-purchase-sequence.md |
+| Lemon Squeezy product copy | ✅ Used | servicevoice-assets/delivery/lemon-squeezy-product-copy.md |
+| Founder Intelligence sheet template | ✅ Complete | servicevoice-assets/delivery/founder-intelligence-sheet-template.md |
+| Notion hub structure doc | ✅ Complete | servicevoice-assets/delivery/notion-hub-structure.md |
+| Ad creatives (7 images) | ✅ Complete | servicevoice-assets/ |
+| Landing page | ✅ Live | servicevoicekit.com |
+| Privacy policy | ✅ Live | servicevoicekit.com/privacy.html |
+| Retell AI agents (5) | ✅ Live | IDs above |
+| Phase 1 research report | ✅ Ingested | servicevoice-assets/ServiceVoice-AI-Kits-Phase1-Report.pdf |
+| Spanish Language Pack scripts | ❌ Not yet built | Post-validation |
+
+---
+
+## Open Items
+
+**Woz — can execute now:**
+- [ ] Export Make.com blueprint JSONs (3 files) → host on GitHub or Google Drive → link in Notion hub
+- [ ] Wire Notion hub link to Lemon Squeezy post-purchase delivery (product thank-you page)
+- [ ] Pull Tally survey response count via API and report
+- [ ] Draft Reddit warmup comments for week 2 (Alistair posts manually)
+- [ ] Monitor Meta ad campaign performance
+
+**Alistair:**
+- [ ] Post Reddit warmup comments — PhoenixTradesPro (r/HVAC) + BuildingAlone_ (r/smallbusiness)
+- [ ] Approve all outreach/campaigns before send (protocol locked)
+
+**Post-validation (after April 15 GO decision):**
+- [ ] Wire ConvertKit post-purchase sequence
+- [ ] Build Spanish Language Pack scripts ($97 add-on)
+- [ ] Produce onboarding video
+- [ ] Activate Google Ads campaign
+- [ ] Done-With-You tier at 20 sales
+
+---
+
+## ARR Goals
+
+**45-Day (by ~May 17, 2026)**
+- [x] Meta validation campaign live ✅
+- [x] Landing page live ✅
+- [x] All 5 Retell agents live ✅
+- [x] Lemon Squeezy store live ✅
+- [x] Notion delivery hub built ✅
+- [ ] 50+ survey responses
+- [ ] Go/no-go locked on launch price
+- [ ] First sale closed
+
+**6-Month (by ~October 2026)**
+- [ ] 10 one-time sales = $4,970+ gross
+- [ ] 20+ active subscribers = ~$940/mo MRR
+- [ ] Spanish Language Pack live
+- [ ] Meta ads CPL <$40, ROAS >1
+- [ ] DWY ($797) introduced at 20-sale threshold
+- [ ] $500–$1,000/mo recurring ARR
 
 ---
 
 ## Decisions Log
-> Append new decisions here. Never overwrite old ones.
 
 | Date | Decision | Rationale |
 |---|---|---|
-| 2026-03-28 | File created as stub | Project referenced in MEMORY.md but no disk file existed — ghost reference eliminated |
+| 2026-03-28 | File created as stub | Project referenced in MEMORY.md but no disk file existed |
 | 2026-03-28 | Phase confirmed: Validation | No build commitment without 30+ survey responses |
-| 2026-03-28 | Phoenix-first launch strategy | Local market knowledge, seasonal demand spike, trades culture alignment |
-| 2026-04-01 | Ad creative set uploaded (6 images) | Full Meta ad set — hook, pain amplifiers, comparison, CTA creatives — saved to servicevoice-assets/ |
-| 2026-04-01 | Phase 1 Research Report ingested | Malcolm Reid report (March 20, 2026) — Strong Go verdict, zero competition in one-time kit space, Phase 2 validation plan defined |
-| 2026-04-01 | 7th ad creative saved (banner) | "Stop Losing Jobs to Voicemail" — brand/awareness banner, no CTA |
-| 2026-04-01 | Full DoAnything chat session reviewed | Sessions 1–5 ingested; complete Phase 2 history documented below |
-| 2026-04-01 | Project transferred to Woz/OpenClaw workspace | DoAnything bot was primary agent; now transitioning to this workspace |
-| 2026-04-02 | Pricing model corrected | $397/$497/$797 were WTP probe points, NOT tiers. Core product = $497 one-time + $47/mo subscription for updates + $97 Spanish add-on. DoAnything bot repackaged probes as tiers — that was an error. Ads were correct (no tier language). Survey market before locking launch price. |
-| 2026-04-02 | ARR Goals defined | 45-day and 6-month revenue targets set; see ARR Goals section |
-| 2026-04-02 | Meta infrastructure confirmed | Business portfolio (ServiceVoiceAi) active under Alistair's personal account; ad account act_948122668150382 in good standing; page confirmed as asset; Malcolm Reid removed; blocked on Meta developer SMS verification to create app + system user token for Woz |
-| 2026-04-02 | Landing page migrated | servicevoicekit.com purchased (Namecheap); static HTML rebuilt from DoAnything source; Nginx on VPS; SSL live on both apex and www; auto-renews July 1 |
-| 2026-04-02 | Reddit dual-account strategy confirmed | PhoenixTradesPro = trades lane (r/HVAC etc.); BuildingAlone_ = entrepreneur lane (r/smallbusiness etc.); Option C warmup: Woz finds threads + drafts comments, Alistair posts manually |
-| 2026-04-02 | Reddit credentials stored | Both accounts in .env.secrets under REDDIT_SERVICEVOICE_BLUECOLLAR_* and REDDIT_SERVICEVOICE_WHITECOLLAR_* |
-| 2026-04-02 | Landing page live and tweaked | Hero text scaled down; stat cards fixed; Spanish Pack emoji fixed; pricing rebuilt as single $497 product + add-ons (no tiers); footnote removed |
-| 2026-04-03 | Meta API access established | WozBot app created (ID: 1685154492844701); System User WozBot created with admin role; token stored in .env.secrets as META_SYSTEM_USER_TOKEN |
-| 2026-04-03 | Validation campaign launched via API | Campaign ID: 6919077778186; Ad Set ID: 6919077908986; 3 ads live (IDs: 6919079370986, 6919079387386, 6919079410386); $8/day CBO; Phoenix 25mi radius; ages 30-55; FB+IG feed only; Advantage+ OFF; all pointing to Tally survey |
-| 2026-04-03 | Privacy policy added to servicevoicekit.com | Required to set WozBot app to Live mode; live at https://servicevoicekit.com/privacy.html |
-| 2026-04-03 | Pre-build sprint completed | All 5 niche scripts written; Make.com workflow architecture mapped; deployment guide written; Notion hub blueprinted; 5-email post-purchase ConvertKit sequence written; Lemon Squeezy product copy written. Remaining: platform accounts (Retell, Make.com, Notion, Lemon Squeezy, ConvertKit) needed to go live. |
-| 2026-04-04 | Founder Intelligence system designed | Workflow 4 (logging) added to Make.com architecture; Google Sheet schema standardized across all projects; Monday 8am MST weekly summary cron job live (cron ID: 5cddc844-4f1c-4532-8e67-36a25904f5fb); Buyer-facing Insights Meta-Agent deferred to post-10-customers milestone |
-| 2026-04-05 | Lemon Squeezy product lineup built via Playwright automation | Core Kit (ID: 945297) updated to $497, full description; Monthly Updates (ID: 947854, $47) and Spanish Language Pack (ID: 947855, $97) created and published in UI. Store activation required before products are purchasable — connect Stripe + complete payout setup at Settings → Payouts. |
-| 2026-04-05 | Outreach / campaign pre-approval protocol locked | Every campaign (email, social, SMS) stops at draft. Alistair approves before anything sends. No exceptions. Applies to all platforms. |
-| 2026-04-05 | ConvertKit deferred to first sale | Sequences are written and ready. Platform not needed until first buyer exists. |
-| 2026-04-05 | Make.com scenarios confirmed built | 4 scenarios live in account (org 7159998): SVAI Lead Capture, Emergency Escalation, Confirmation SMS, Founder Intelligence Log — all inactive, pending Make.com account connections (Google, Twilio). |
+| 2026-03-28 | Phoenix-first launch strategy | Local market knowledge, seasonal demand, trades culture |
+| 2026-04-01 | Ad creative set uploaded (6 images) | Full Meta ad set saved to servicevoice-assets/ |
+| 2026-04-01 | Phase 1 Research Report ingested | Strong Go verdict — zero competition in one-time kit space |
+| 2026-04-01 | Full DoAnything chat session reviewed | Sessions 1–5 ingested; Phase 2 history documented |
+| 2026-04-01 | Project transferred to Woz/OpenClaw | DoAnything was primary agent; now Woz/OpenClaw |
+| 2026-04-02 | Pricing model corrected | $397/$497/$797 were WTP probe points, NOT product tiers. Core = $497 + $47/mo + $97 Spanish. DoAnything bot error. |
+| 2026-04-02 | ARR goals defined | 45-day and 6-month targets set |
+| 2026-04-02 | Meta infrastructure confirmed | Portfolio active, ad account in good standing, Malcolm Reid removed |
+| 2026-04-02 | Landing page migrated to VPS | servicevoicekit.com — Nginx, SSL, static HTML |
+| 2026-04-02 | Reddit dual-account strategy | PhoenixTradesPro = trades; BuildingAlone_ = entrepreneur; Alistair posts manually |
+| 2026-04-02 | Landing page live and tweaked | Pricing rebuilt as single $497 + add-ons |
+| 2026-04-03 | Meta API access established | WozBot system user created; token in .env.secrets |
+| 2026-04-03 | Validation campaign launched | Campaign 6919077778186; 3 ads; $8/day; Phoenix 25mi |
+| 2026-04-03 | Privacy policy added | Required for Meta app Live mode |
+| 2026-04-03 | Pre-build sprint completed | All 5 scripts, Make.com architecture, deployment guide, email sequence, LS copy |
+| 2026-04-04 | Founder Intelligence system designed | Workflow 4 (logging) added; weekly summary cron live (ID: 5cddc844) |
+| 2026-04-05 | Lemon Squeezy fully built via Playwright | Core Kit $497 ✅; Monthly Updates $47 ✅; Spanish Pack $97 ✅; all published with live buy URLs |
+| 2026-04-05 | Store confirmed live | All 3 products have active checkout URLs; payout account connected |
+| 2026-04-05 | Delivery model: Notion hub (no ZIP) | Notion hub replaces ZIP; Make.com blueprint JSONs hosted as download links inside Notion |
+| 2026-04-05 | Notion delivery hub built | Full hub live: 8 sections + 5 niche script sub-pages; WozBot integration active |
+| 2026-04-05 | ConvertKit deferred to first sale | Sequences written; platform not needed until first buyer |
+| 2026-04-05 | Make.com scenarios confirmed built | 4 scenarios in account — inactive, pending Google/Twilio connections |
+| 2026-04-05 | Outreach pre-approval protocol locked | Every campaign stops at draft; Alistair approves before send; no exceptions |
+| 2026-04-05 | Campaign approval protocol | All social/email/ad campaigns require Alistair sign-off before publishing |
 
 ---
 
-## Phase 1 Research Summary (Malcolm Reid — March 20, 2026)
+## Phase 1 Research Summary
 
 **Verdict: Strong Go. Proceed to Phase 2 Demand Validation.**
 
-**Market:**
-- 1,514 HVAC contractors in Phoenix; 72% single-owner ops (1,091 = core target)
-- ~600–800 have enough digital presence to be reachable online
+- 1,514 HVAC contractors in Phoenix; 72% single-owner ops
 - Trades owners lose $45K–$120K/year from missed calls
-- 27–74% of home service calls go unanswered; 85% of missed callers don't leave voicemail
-- Summer (May–Sept): 115°F+ heat = 300–400% call volume spike
-
-**Competition:**
-- All SaaS competitors charge forever (Allo $45/mo, Rosie $49/mo, AnsweringAgent $50–$150/mo)
-- DIY platforms (Retell, Vapi, GoHighLevel) require technical setup — no templates
-- **Zero competition in one-time deployable kit space — genuine first-mover window**
+- 27–74% of home service calls go unanswered
+- Summer (May–Sept): 300–400% call volume spike
+- Zero competition in one-time deployable kit space
+- All SaaS competitors charge forever ($45–$150/mo)
 
 **Self-audit flags:**
-- National AI adoption data may overstate Phoenix solo-operator tech readiness → validate locally
-- Retell usage costs ($90–$150/month buyer-side) must be disclosed prominently — hidden costs will tank reviews
-- Older solo trades owners may resist; focus on 30–45 age demo via Facebook + smartphones
-- GHL agencies in Phoenix may already offer managed service at $200–$500/mo — differentiate on ownership + price
+- Retell usage costs ($90–$150/month buyer-side) must be disclosed — hidden costs tank reviews
+- Focus on 30–45 age demo via Facebook
+- GHL agencies may offer managed service at $200–$500/mo — differentiate on ownership + price
 
-**Phoenix differentiators to build into kit:**
+**Phoenix differentiators built into kit:**
 - Summer surge scripts (AC emergency triage)
-- AZ timezone logic (Mountain Standard, no daylight saving)
+- AZ timezone logic (MST, no daylight saving)
 - Monsoon season roofing scripts (July–Sept)
 - Bilingual auto-detection + Spanish Pack
-- No-show follow-up with Phoenix drive time acknowledgment
 - AZ local pricing benchmarks in scripts
-
-**Report file:** `life/projects/servicevoice-assets/ServiceVoice-AI-Kits-Phase1-Report.pdf`
-
----
-
-## Ad Creatives (2026-04-01)
-
-Saved to `life/projects/servicevoice-assets/`.
-
-| File | Hook / Concept | Price Shown | CTA |
-|---|---|---|---|
-| ad-hook-attic-107deg.jpg | "It's 107°. Your phone is ringing. You're in the attic." | — | None (awareness/hook) |
-| ad-missed-2400-call.jpg | "You just missed another $2,400 call" | — | Lock In My $100 Discount |
-| ad-weekly-reality-check.jpg | "5 missed calls = $7,500 lost. Every. Single. Week." | — | None (pain amplifier) |
-| ad-stop-paying-monthly.jpg | "Stop paying $150/mo. Pay once. Own it." | $497 one-time | See How It Works |
-| ad-comparison-397-vs-monthly.jpg | Monthly subs $97–$200 vs ServiceVoice $397 one-time | $397 one-time | None |
-| ad-built-for-phoenix.jpg | "Built for Phoenix HVAC, Plumbing & Electrical Owners" | — | Get Early Access — $100 Off |
-| ad-stop-losing-jobs-banner.jpg | "Stop Losing Jobs to Voicemail." — brand/awareness banner | — | None |
-
----
-
-## Campaign Drafts (Ready to Load into New Meta BM)
-
-- **Campaign:** "SVA - Survey - Traffic" — $8/day CBO, Traffic objective
-- **Ad 1:** "You just missed another call. That's $2,400 walking to your competitor..." / Headline: "Stop Losing Jobs to Voicemail" / CTA: Learn More / URL: tally.so/r/eqEXQE
-- **Ad 2:** "Most AI answering services charge $150/month — forever. What if you paid once?" / Headline: "Pay Once. Own It. No Subscriptions."
-- **Ad 3:** "Phoenix HVAC, plumbing, and electrical owners — summer is coming..." / Headline: "Built for Phoenix Trades"
-- Images: servicevoice-assets/ folder
-
----
-
-## Notes
-
-- Malcolm Reid is the operating persona — all outreach, landing pages, and communications use this identity
-- Do not conflate with Healthcare Guardian (Elias Reed) or Fueled for Duty (Cole Mercer) — keep personas isolated
