@@ -28,7 +28,7 @@ _(Add here when Alistair asks to be reminded of something; delete after firing)_
 ## Current Project Watch
 _(Add a line here when a project needs a periodic status nudge)_
 
-- **Fueled for Duty** (`projects/first-responder-brand.md`) — active build phase; review Decisions Log for undocumented items
+- **Fueled for Duty** (`projects/fueled-for-duty/fueled-for-duty.md`) — active build phase; review Decisions Log for undocumented items
 - ServiceVoice AI Kits — no project file on disk yet; flag when Alistair is active
 - Healthcare Guardian — no project file on disk yet; flag when Alistair is active
 

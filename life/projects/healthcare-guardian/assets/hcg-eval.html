@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-03-31" />
+  <title>Healthcare Guardian — Full Project Evaluation</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="/root/.openclaw/workspace/hcg-eval.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Healthcare Guardian — Full Project Evaluation</h1>
+<p class="subtitle">Prepared by Woz | Based on 24 Source Documents</p>
+<p class="date">March 31, 2026</p>
+</header>
+<hr />
+<h1 id="executive-summary">Executive Summary</h1>
+<p>Healthcare Guardian is a legitimate B2B SaaS-adjacent business with a
+defensible market position, a real regulatory tailwind, and a well-built
+strategic foundation. The research, curriculum architecture, demo flow,
+and outreach sequences are all production-ready. The product has not yet
+generated revenue, but the infrastructure to do so exists. The primary
+gap is execution — specifically, the Phase 2 validation outreach has not
+started despite the plan being complete.</p>
+<p><strong>Overall assessment: Green. Execute. Correct one strategic
+error (geographic targeting). Fix the email sender problem.
+Move.</strong></p>
+<hr />
+<h1 id="part-1-the-market">Part 1: The Market</h1>
+<h2 id="problem-scale">Problem Scale</h2>
+<ul>
+<li>Healthcare workers are ~10% of the U.S. workforce but absorb
+<strong>48% of all nonfatal workplace violence injuries</strong></li>
+<li>Healthcare workers are <strong>5x more likely</strong> to experience
+workplace violence than the average U.S. worker</li>
+<li>WPV incidents increased <strong>30% between 2021–2022</strong></li>
+<li><strong>75% of all U.S. workplace assaults</strong> occur in
+healthcare and social service settings (OSHA)</li>
+<li>The American Hospital Association pegs <strong>total annual cost of
+WPV at $18.27 billion</strong></li>
+<li>ED nurses report assault rates as high as <strong>12.7 per 100
+workers per year</strong></li>
+<li>Reporting rates are estimated at <strong>30–70% of actual
+incidents</strong> — cultural normalization is itself a correctable
+condition</li>
+</ul>
+<h2 id="regulatory-tailwinds">Regulatory Tailwinds</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Jurisdiction</th>
+<th>Mandate</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>California</td>
+<td>Cal/OSHA T8 §3342 + SB 553 (all employers, July 2024)</td>
+<td>Active — most comprehensive in nation</td>
+</tr>
+<tr class="even">
+<td>New York</td>
+<td>Hospital/nursing home WPV prevention law</td>
+<td>Signed Dec. 2025 — <strong>effective September 2026</strong></td>
+</tr>
+<tr class="odd">
+<td>Texas</td>
+<td>HB 2025 — violence prevention plans for healthcare</td>
+<td>Effective September 2024</td>
+</tr>
+<tr class="even">
+<td>Illinois, WA, OR, NJ, CT</td>
+<td>Active mandates or advanced legislation</td>
+<td>Rolling</td>
+</tr>
+<tr class="odd">
+<td>Joint Commission</td>
+<td>New WPV prevention standards across behavioral health + home
+care</td>
+<td>July 2024 — auditable, documentation required</td>
+</tr>
+</tbody>
+</table>
+<p>Federal OSHA rule is stalled (moved to Long-Term Action, September
+2025). This actually helps: state-level mandates are accelerating to
+fill the void, creating a patchwork that makes a multi-state digital
+training product more valuable, not less.</p>
+<p><strong>New York’s September 2026 deadline is the single most urgent
+market activation in play right now.</strong></p>
+<h2 id="competitive-landscape">Competitive Landscape</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Provider</th>
+<th>Focus</th>
+<th>Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPI (Crisis Prevention Institute)</td>
+<td>De-escalation + restraint</td>
+<td>$1,250–$3,450/person; restraint-heavy; slow to scale</td>
+</tr>
+<tr class="even">
+<td>AVADE Training</td>
+<td>WPV prevention awareness</td>
+<td>Compliance-focused; limited personal agency content</td>
+</tr>
+<tr class="odd">
+<td>Vistelar</td>
+<td>Communication-based prevention</td>
+<td>Strong methodology; weak digital delivery</td>
+</tr>
+<tr class="even">
+<td>MOAB</td>
+<td>Physical intervention</td>
+<td>Very physical; liability-heavy</td>
+</tr>
+<tr class="odd">
+<td>HealthStream / Relias</td>
+<td>LMS catalog platforms</td>
+<td>Generic; not specialized</td>
+</tr>
+<tr class="even">
+<td>MedTrainer</td>
+<td>Compliance LMS</td>
+<td>HIPAA/OSHA focused; not behavioral safety</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The gap:</strong> No competitor leads with individual
+behavioral agency — the concept that the employee, through awareness,
+positioning, communication, and decision-making, is the first and most
+powerful layer of their own defense. Healthcare Guardian owns that
+positioning if it executes.</p>
+<hr />
+<h1 id="part-2-strategic-decisions-made">Part 2: Strategic Decisions
+Made</h1>
+<h2 id="the-7-questions-final-answers">The 7 Questions — Final
+Answers</h2>
+<p><strong>Q1 — Physical Content Scope</strong> Exclude from digital
+product entirely for launch. Reserve for in-person curriculum (future
+upsell). Simplifies legal review, removes friction for risk managers,
+keeps digital product clean for enterprise compliance sales.</p>
+<p><strong>Q2 — Avatar Identity</strong> Female presenter, named Morgan
+Hayes. AI avatar via HeyGen. Nursing workforce is 87% female;
+same-gender pedagogical agents produce higher engagement and perceived
+credibility for self-advocacy content. Elias Reed remains the curriculum
+architect and brand voice in written/email communications — Morgan is
+the on-screen expert voice. Clean distinction.</p>
+<p><strong>Q3 — Launch Scope</strong> Single pilot module first (Module
+3: Pattern Recognition, ~10–12 minutes), then full curriculum build.
+Price: $29/seat, minimum 5 seats ($145). Goal of pilot: proof of
+purchase, qualitative feedback, completion rate data — not revenue.</p>
+<p><strong>Q4 — Business Entity</strong> Healthcare Guardian LLC —
+Arizona filing (~$50–85 via azcc.gov). EIN via IRS.gov (free, 5
+minutes). Business bank account (Mercury recommended). Stripe under
+entity. This must happen before any money moves.</p>
+<p><strong>Q5 — Pricing</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pilot module (validation)</td>
+<td>$29/seat</td>
+</tr>
+<tr class="even">
+<td>Full curriculum — per seat</td>
+<td>$59/seat</td>
+</tr>
+<tr class="odd">
+<td>Facility license (up to 50 seats)</td>
+<td>$2,200/year</td>
+</tr>
+<tr class="even">
+<td>Department license (up to 150 seats + LMS)</td>
+<td>$5,500/year</td>
+</tr>
+<tr class="odd">
+<td>Enterprise (unlimited + SCORM + branding)</td>
+<td>$15,000–$22,000/year</td>
+</tr>
+</tbody>
+</table>
+<p>Discount through added value, not price cuts. Year 2 renewal: 10%
+loyalty. Year 3+: 15%.</p>
+<p><strong>Q6 — Distribution</strong> Direct sales only for first 12
+months. No platform listing (HealthStream, Relias) until 10+ paying
+clients and brand equity established. Platform partnerships take 6–18
+months to negotiate and surrender 30–50% revenue plus client
+relationship control.</p>
+<p><strong>Q7 — Geographic Priority</strong> NY + CA primary, TX
+secondary, national for digital/LinkedIn outreach. NY September 2026
+mandate is the ticking clock. California has had active mandates since
+2020. Texas September 2024 mandate underway.</p>
+<hr />
+<h1 id="part-3-course-architecture">Part 3: Course Architecture</h1>
+<p><strong>Working title:</strong> <em>Healthcare Guardian: The
+Self-Advocate Safety System</em> <strong>On-screen presenter:</strong>
+Morgan Hayes (AI avatar, HeyGen) <strong>Curriculum architect / brand
+voice:</strong> Elias Reed</p>
+<h2 id="module-map">Module Map</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Module Title</th>
+<th>Focus</th>
+<th>Length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>The Landscape of Risk</td>
+<td>WPV scope, who’s at risk, why you can’t rely on others first</td>
+<td>8–10 min</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Reading the Room</td>
+<td>Environmental awareness, venue mapping, barrier/distance, exits</td>
+<td>10–12 min</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Pattern Recognition and Early Warning <em>(PILOT)</em></td>
+<td>Behavioral escalation patterns, pre-incident indicators, JACA
+model</td>
+<td>10–12 min</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>The Neuroscience of Fear</td>
+<td>Freeze response, Flee &gt; Alert &gt; Fight hierarchy, stress
+inoculation</td>
+<td>8–10 min</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>The Voice Before the Violence</td>
+<td>Verbal de-escalation, Verbal Judo framework, command presence</td>
+<td>10–12 min</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Team Safety Dynamics</td>
+<td>Non-verbal colleague communication, team protocols, never being
+isolated</td>
+<td>8–10 min</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>When Words Aren’t Enough</td>
+<td>Last resort principles — <em>scope subject to future legal review;
+excluded from digital launch</em></td>
+<td>10–12 min</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>After the Incident</td>
+<td>Documentation, trauma response, culture of non-acceptance</td>
+<td>8 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total curriculum:</strong> ~75–90 minutes across 8 modules
+<strong>Each module:</strong> 1 scenario vignette + 1 knowledge check
+(4–5 questions) + 1 key principle summary card
+<strong>Completion:</strong> Certificate with timestamp, learner name,
+course version, CEU credit (pending ANCC approval)
+<strong>Format:</strong> SCORM 1.2 required for enterprise LMS
+integration; xAPI adds value for larger health systems</p>
+<hr />
+<h1 id="part-4-phase-2-validation-plan">Part 4: Phase 2 Validation
+Plan</h1>
+<h2 id="objective">Objective</h2>
+<p>Validate — with real market signal — that sufficient demand exists to
+justify building the full 8-module curriculum. Prove buyers will pay the
+target price. Convert at least one prospect to a paying pilot
+client.</p>
+<p><strong>This phase ends with a go/no-go decision on full curriculum
+development.</strong></p>
+<h2 id="week-execution-timeline">6-Week Execution Timeline</h2>
+<p><strong>Week 0 (Pre-Launch):</strong> LLC formed, domain live
+(healthcareguardiantraining.com), landing page live, survey published
+(Typeform), CRM set up (HubSpot free), 60-contact list built (20 CNOs,
+20 Risk Managers, 20 Education Directors — prioritized NY, CA, TX)</p>
+<p><strong>Week 1:</strong> CNO Touch 1 to 20 contacts. LinkedIn Post 1
+(Problem Statement). LinkedIn Post 3 (NY Compliance) + DMs to NY
+contacts. Log all contacts in CRM.</p>
+<p><strong>Week 2:</strong> Risk Manager Touch 1. LinkedIn Post 2
+(Freeze Response). Survey live + Post 7 (Survey Launch). CNO Touch 2
+follow-ups. Survey link in all outreach going forward.</p>
+<p><strong>Week 3:</strong> Education Director Touch 1. Posts 4 + 5.
+Risk Manager Touch 2. First survey data review. Respond personally to
+every reply — these are sales conversations.</p>
+<p><strong>Week 4:</strong> Posts 6 + 8. Education Director Touch 2. All
+Touch 3 closes. Any interested contacts should be scheduling discovery
+calls.</p>
+<p><strong>Week 5:</strong> Pilot offer push to all warm contacts
+(replied, clicked, or completed survey). Personal, non-automated email.
+Track: How many accept? How many ask pricing?</p>
+<p><strong>Week 6:</strong> Survey closed and analyzed. CRM reviewed.
+Go/no-go assessment. Phase 2 debrief written.</p>
+<h2 id="contact-list-build-no-paid-tools-required">Contact List Build
+(No Paid Tools Required)</h2>
+<ul>
+<li>LinkedIn Sales Navigator free trial: “Chief Nursing Officer” + “New
+York” + “Hospital”</li>
+<li>Repeat for Risk Manager and Education Director in CA and TX</li>
+<li>American Hospital Association member directory (public)</li>
+<li>State hospital association directories (NY, CA, TX — all publish
+member lists)</li>
+</ul>
+<p>Do not buy a list from a data broker for validation. 60 highly
+targeted contacts will produce more signal than 600 generic ones.</p>
+<h2 id="go-no-go-kpis">Go / No-Go KPIs</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Signal</th>
+<th>Green</th>
+<th>Yellow</th>
+<th>Red</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Survey response rate</td>
+<td>&gt;10%</td>
+<td>5–10%</td>
+<td>&lt;5%</td>
+</tr>
+<tr class="even">
+<td>Outreach reply rate (all sequences)</td>
+<td>&gt;8%</td>
+<td>4–8%</td>
+<td>&lt;4%</td>
+</tr>
+<tr class="odd">
+<td>Discovery calls booked from outreach</td>
+<td>&gt;10</td>
+<td>5–10</td>
+<td>&lt;5</td>
+</tr>
+<tr class="even">
+<td>Survey Q8: current training rating avg</td>
+<td>&lt;3.5</td>
+<td>3.5–4.0</td>
+<td>&gt;4.0</td>
+</tr>
+<tr class="odd">
+<td>Survey Q16: WTP $40+/seat</td>
+<td>&gt;50%</td>
+<td>30–50%</td>
+<td>&lt;30%</td>
+</tr>
+<tr class="even">
+<td>Pilot module acceptances</td>
+<td>&gt;5</td>
+<td>2–5</td>
+<td>0–1</td>
+</tr>
+<tr class="odd">
+<td>Any paid pilot purchase ($29+)</td>
+<td>1+</td>
+<td>—</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Green on 5+ signals:</strong> Full curriculum build approved.
+Begin Phase 3. <strong>Yellow on 3+ signals:</strong> Identify weak
+signals. Adjust positioning or persona. 30-day extension. <strong>Red on
+3+ signals:</strong> Do not proceed. Investigate root cause before
+spending another dollar.</p>
+<h2 id="phase-2-cost-estimate">Phase 2 Cost Estimate</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Domain (healthcareguardiantraining.com)</td>
+<td>~$15/year</td>
+</tr>
+<tr class="even">
+<td>Website (Carrd or Webflow basic)</td>
+<td>$0–$19/month</td>
+</tr>
+<tr class="odd">
+<td>Typeform (survey)</td>
+<td>$0–$25/month</td>
+</tr>
+<tr class="even">
+<td>HubSpot CRM</td>
+<td>$0 (free tier)</td>
+</tr>
+<tr class="odd">
+<td>LinkedIn outreach</td>
+<td>$0 (organic only)</td>
+</tr>
+<tr class="even">
+<td><strong>Total Phase 2</strong></td>
+<td><strong>$15–$75 for 6 weeks</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="part-5-discovery-call-script">Part 5: Discovery Call Script</h1>
+<p><em>Use as a guide, not a script to read verbatim. Listen more than
+you talk.</em></p>
+<p><strong>Opening:</strong> “Thanks for connecting. I’ll keep this
+focused — I know your time is limited. I’ve been building Healthcare
+Guardian and I’m trying to make sure the program solves a real problem
+before I ask anyone to invest in it. I’d genuinely like to hear your
+perspective on what’s actually missing in your current training, if
+anything.”</p>
+<p><strong>Core Questions:</strong></p>
+<ol type="1">
+<li>“Walk me through what your current WPV training looks like —
+frequency, format, who delivers it.”</li>
+<li>“What does your staff tell you about it — does it stick? Do they
+feel better prepared after?”</li>
+<li>“If you could change one thing about how your organization
+approaches this, what would it be?”</li>
+<li>“Is this on your radar as a compliance issue right now, or a staff
+safety culture issue — or both?”</li>
+<li>“If I told you there was a program your staff could complete in
+under 90 minutes, that they’d actually retain, and that produces the
+documentation trail you need — what would that be worth annually?”</li>
+</ol>
+<p><strong>The Ask:</strong> “I’d like to offer you complimentary access
+to our pilot module — a complete 10-minute module on behavioral pattern
+recognition. You can assign it to a small group and give me honest
+feedback on whether it’s the right level for your team. No purchase
+required. Would that be useful?”</p>
+<p><strong>Strong Demand Signals:</strong> - Asks about pricing without
+being prompted - Mentions a specific incident or recent pattern -
+References a mandate or compliance deadline - Mentions budget
+authority</p>
+<hr />
+<h1 id="part-6-demo-flow-summary-20-minute-call">Part 6: Demo Flow
+Summary (20-Minute Call)</h1>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Time</th>
+<th>Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>The Hook</td>
+<td>2 min</td>
+<td>Get them talking about their reality before you pitch anything</td>
+</tr>
+<tr class="even">
+<td>The Problem Frame</td>
+<td>3 min</td>
+<td>3 stats; end with the “checkbox training” critique</td>
+</tr>
+<tr class="odd">
+<td>Live Module Demo</td>
+<td>8 min</td>
+<td>Morgan Hayes intro → escalation sequence → knowledge check →
+certificate</td>
+</tr>
+<tr class="even">
+<td>Objection Handling</td>
+<td>3 min</td>
+<td>See below</td>
+</tr>
+<tr class="odd">
+<td>The Close</td>
+<td>2 min</td>
+<td>Enrollment link or specific next action — never “I’ll think about
+it”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Objection Responses:</strong></p>
+<p><em>“We already have WPV training.”</em> → “This isn’t a replacement
+— it’s a layer. What does your current program teach staff to do in the
+30 seconds before a situation peaks?”</p>
+<p><em>“No time for more training.”</em> → “Module 3 is 12 minutes.
+Self-paced. Done between patients on a tablet.”</p>
+<p><em>“Need to go through procurement.”</em> → “The pilot bypasses
+that. $145 direct purchase. You can have data to bring to procurement
+next week.”</p>
+<p><em>“What’s the ROI?”</em> → “One nurse turnover event costs
+$40,000–$60,000. De-escalation training reduces incidents 40–60%. The
+pilot is $145.”</p>
+<hr />
+<h1 id="part-7-evaluation-findings">Part 7: Evaluation Findings</h1>
+<h2 id="whats-built-and-ready">What’s Built and Ready</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Asset</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phase 1 Market Research</td>
+<td>✅ Complete — solid, data-grounded</td>
+</tr>
+<tr class="even">
+<td>Phase 2 Validation Plan</td>
+<td>✅ Complete — structured with KPIs and go/no-go criteria</td>
+</tr>
+<tr class="odd">
+<td>Expert recommendations on all 7 decisions</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>Outreach email sequences (3 personas × 3 touches)</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>LinkedIn content calendar (8 posts)</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>Module 3 HeyGen script (pilot module)</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>Module 3 production script + storyboard</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>Module 1 HeyGen script + production script</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>Pilot demo flow document</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>Landing page / website copy</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>Survey (Typeform or similar)</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="even">
+<td>LinkedIn profile — Elias Reed</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>LLC Operating Agreement</td>
+<td>✅ Complete (template)</td>
+</tr>
+<tr class="even">
+<td>Mercury bank application guide</td>
+<td>✅ Complete</td>
+</tr>
+<tr class="odd">
+<td>Stripe setup checklist</td>
+<td>✅ Complete</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-still-needs-to-happen">What Still Needs to Happen</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Priority</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fix email deliverability / sender identity</td>
+<td>🔴 Critical</td>
+<td>Outreach emails flagging as spam; domain authentication
+(SPF/DKIM/DMARC) needed</td>
+</tr>
+<tr class="even">
+<td>Form Healthcare Guardian LLC in Arizona</td>
+<td>🔴 Critical</td>
+<td>Must happen before any payment accepted</td>
+</tr>
+<tr class="odd">
+<td>Open Mercury business bank account</td>
+<td>🔴 High</td>
+<td>Depends on LLC + EIN</td>
+</tr>
+<tr class="even">
+<td>Set up Stripe under LLC</td>
+<td>🔴 High</td>
+<td>Depends on LLC + bank</td>
+</tr>
+<tr class="odd">
+<td>Build NY + CA contact list</td>
+<td>🔴 High</td>
+<td>Current list was AZ-heavy — misaligned with validated strategy</td>
+</tr>
+<tr class="even">
+<td>Launch Phase 2 outreach</td>
+<td>🔴 High</td>
+<td>Everything is built; nothing has been sent</td>
+</tr>
+<tr class="odd">
+<td>Produce Module 3 in HeyGen</td>
+<td>🟡 Medium</td>
+<td>Script complete; production not started</td>
+</tr>
+<tr class="even">
+<td>Teachable or TalentLMS account setup</td>
+<td>🟡 Medium</td>
+<td>Needed to host pilot module</td>
+</tr>
+<tr class="odd">
+<td>ANCC CEU accreditation application</td>
+<td>🟢 Later</td>
+<td>Needed before enterprise sales; not blocking pilot</td>
+</tr>
+<tr class="even">
+<td>Legal review of curriculum</td>
+<td>🟢 Later</td>
+<td>Budget $2,000–$5,000; needed before full launch</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flags-and-risks">Flags and Risks</h2>
+<p><strong>Geographic strategy deviation (Flag)</strong> The Phase 2
+plan validated NY + CA as primary markets. The Arizona-focused outreach
+list (Banner Health, HonorHealth, Dignity Health, Carondelet) is a
+deviation. Arizona has no active WPV mandate. New York hospitals have a
+September 2026 deadline and are actively looking for solutions right
+now. The next outreach wave should correct this.</p>
+<p><strong>Email deliverability (Critical Blocker)</strong> Cold
+outreach from elias@healthcareguardiantraining.com is flagging as spam.
+Without domain authentication (SPF, DKIM, DMARC records), a properly
+warmed sending domain, and a clean IP, open rates will be below 10%
+regardless of copy quality. This must be fixed before any outreach is
+sent.</p>
+<p><strong>Physical content liability (Managed, not eliminated)</strong>
+Decision to exclude physical defense content from digital product is
+correct. Risk is not zero — even the behavioral content should have
+legal review before enterprise sales begin. Budget for this in Phase
+3.</p>
+<p><strong>Validation vs. confirmation bias</strong> Positive survey
+responses are not paid transactions. The only hard validation signal is
+a paid purchase, even at $29. Separate soft interest from real demand in
+the tracking.</p>
+<p><strong>Discovery call exposure</strong> Elias Reed cannot be on a
+live voice call. The pilot demo flow describes a 20-minute discovery
+call but doesn’t specify who runs it. This gap needs a decision: use the
+self-serve flow only, hire a fractional SDR, or reconsider the
+real-identity vs. persona structure for call scenarios.</p>
+<h2 id="financial-picture">Financial Picture</h2>
+<p><strong>Phase 2 cost:</strong> $15–$75 (near-zero) <strong>Phase 3
+(pilot production) cost:</strong> ~$500–$2,000 (HeyGen + platform setup)
+<strong>Full launch cost:</strong> $5,000–$12,000 (legal review, SCORM
+build, LMS, branding)</p>
+<p><strong>Break-even scenarios:</strong> - 3 Facility licenses @
+$2,200/yr = $6,600 — covers monthly ops - 10 Facility licenses =
+$22,000/yr — validates demand, cash-flow positive - 5 Department
+licenses @ $5,500/yr = $27,500/yr — strong early traction</p>
+<hr />
+<h1 id="part-8-recommended-next-actions-prioritized">Part 8: Recommended
+Next Actions (Prioritized)</h1>
+<ol type="1">
+<li><p><strong>Fix email deliverability.</strong> Set SPF, DKIM, and
+DMARC on healthcareguardiantraining.com. Use a warm sending tool
+(Instantly, Lemlist, or Mailshake) before any outreach goes
+out.</p></li>
+<li><p><strong>File Healthcare Guardian LLC in Arizona.</strong> $50–$85
+at azcc.gov. Get EIN. Open Mercury account. Set up Stripe. This is a
+precondition for receiving any payment.</p></li>
+<li><p><strong>Rebuild the outreach contact list targeting NY and
+CA.</strong> 20 CNOs, 20 Risk Managers, 20 Education Directors — all New
+York and California institutions first. Use LinkedIn Sales Navigator
+free trial + AHA and state hospital association directories. Do not
+purchase a list.</p></li>
+<li><p><strong>Decide on the discovery call problem.</strong> Who runs
+live calls if they’re needed? Options: (a) self-serve only for the
+pilot, no live calls required; (b) Alistair runs calls under the Elias
+persona via voice-masked or text-only channel; (c) fractional SDR hired
+after first paid client.</p></li>
+<li><p><strong>Launch Phase 2 outreach.</strong> Everything is built.
+Sequences are written. Survey is ready. Once deliverability is fixed and
+the list is rebuilt toward NY/CA, the clock starts.</p></li>
+<li><p><strong>Produce Module 3 in HeyGen.</strong> Script is complete.
+Production takes a few hours once you’re in the platform. This is needed
+for the warm outreach pilot offer in Week 5.</p></li>
+</ol>
+<hr />
+<h1 id="appendix-pricing-reference">Appendix: Pricing Reference</h1>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>Price</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pilot module (per seat)</td>
+<td>$29</td>
+<td>Validation pricing</td>
+</tr>
+<tr class="even">
+<td>Full curriculum (per seat)</td>
+<td>$59</td>
+<td>Small practices, solo buyers</td>
+</tr>
+<tr class="odd">
+<td>Facility annual license (50 seats)</td>
+<td>$2,200/yr</td>
+<td>Small hospitals, clinics</td>
+</tr>
+<tr class="even">
+<td>Department annual license (150 seats + LMS)</td>
+<td>$5,500/yr</td>
+<td>Hospital departments</td>
+</tr>
+<tr class="odd">
+<td>Enterprise (unlimited + SCORM + branding)</td>
+<td>$15,000–$22,000/yr</td>
+<td>Health systems, multi-site</td>
+</tr>
+<tr class="even">
+<td>White label</td>
+<td>$35,000–$75,000 + royalty</td>
+<td>Large systems, associations</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Evaluation prepared by Woz — based on full review of 24
+Healthcare Guardian source documents.</em> <em>All findings reflect
+document content as of March 2026. No external research
+conducted.</em></p>
+</body>
+</html>

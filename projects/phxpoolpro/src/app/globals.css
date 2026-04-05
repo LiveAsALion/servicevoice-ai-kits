@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pool-blue: #0ea5e9;
+  --pool-blue-dark: #0284c7;
+  --pool-blue-light: #e0f2fe;
+  --warm-gray: #374151;
+  --desert-sand: #fef9f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased;
+}

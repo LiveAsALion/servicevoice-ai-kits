@@ -25,6 +25,11 @@
 
 ---
 
+## Time & Location Standard
+- **Always reference time in Phoenix, AZ MST (UTC-7).** Arizona does not observe daylight saving time — MST year-round.
+- Apply this in all sessions, all projects, all chats (private or group). No exceptions.
+- When giving time-based guidance ("check back tonight," "tomorrow morning," etc.) — always anchor to Phoenix local time.
+
 ## Confirmed Preferences (Learned Through Use)
 
 - Prefers structured output: tables, status indicators, clear next steps
@@ -47,12 +52,14 @@
 
 ## Active Project Index
 
-| Project | File | Current Phase |
-|---|---|---|
-| ServiceVoice AI Kits | /projects/servicevoice.md | Validation |
-| Healthcare Guardian | /projects/healthcare-guardian.md | Validation |
-| Trading Bot | /projects/trading-bot.md | Build |
-| Civic Speed Monitor | /projects/civic-speed-monitor.md | Build |
+| Project | File | Current Phase | Notable Status |
+|---|---|---|---|
+| ServiceVoice AI Kits | life/projects/servicevoice.md | Validation | Validation campaign live ✅ — 3 Meta ads running at $8/day (campaign 6919077778186) pointing to Tally survey. All 5 niche assets pre-built (scripts, Make.com architecture, deployment guide, Notion hub, email sequence, Lemon Squeezy copy, Retell AI agents live). Founder Intelligence logging system designed (2026-04-04). **Open:** Survey responses needed (target 50+ by April 15); Alistair Reddit warmup comments; platform accounts (Make.com, Notion, Lemon Squeezy, ConvertKit) still needed to go live. Hard deadline: April 15 go/no-go. |
+| Healthcare Guardian | life/projects/healthcare-guardian/healthcare-guardian.md | Validation | SSL live ✅; email warm-up running through April 7; outreach launches April 8 |
+| Trading Bot | life/projects/trading-bot.md | Build | Alpaca API in stack; repo TBD |
+| SpeedShield (fka Civic Speed Monitor) | life/projects/speedshield/speedshield.md | Build | Field test passed (2026-03-31); Doze-aware activation live; multi-vehicle BT device picker added (MAC-based matching); double-TTS bug fixed; actual distance TTS; all Android runtime permissions correct (2026-04-01); pending: MAC-based BT field test, deploy update_cameras.py, Codemagic setup, in-app purchase layer, store submissions |
+| Fueled for Duty | life/projects/fueled-for-duty/fueled-for-duty.md | Content Production | Cole Mercer avatar + voice clone created in HeyGen (2026-03-27); blocked on API keys |
+| Phoenix Pool Leads | life/projects/phoenix-pool-leads.md | Validation | phxpoolpro.com live on VPS (2026-04-02); Docker + Nginx + SSL deployed; DNS conflict on www (CNAME + A record) — needs cleanup; SPF missing spf.resend.com; 0 leads so far, validation threshold = 4 confirmed partners |
 
 ---
 
@@ -68,4 +75,4 @@
 
 ## Last Updated
 > Update this line each time the file is edited.
-> v1.1 — added server/infra section, firewall reminder rule
+> v1.9 — ServiceVoice index updated to current state (validation campaign live, pre-build sprint complete); 2026-04-04

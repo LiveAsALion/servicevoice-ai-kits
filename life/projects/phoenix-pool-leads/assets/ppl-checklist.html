@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phoenix Pool Leads — Project Checklist</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 28px 32px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 3px solid #1a6fc4;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  .header-left h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a6fc4;
+    letter-spacing: -0.5px;
+  }
+  .header-left .sub {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 11px;
+    color: #888;
+  }
+  .header-right .phase-badge {
+    display: inline-block;
+    background: #fff3cd;
+    border: 1px solid #e6a817;
+    color: #7a5000;
+    font-weight: 700;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* Two-column layout */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* Section card */
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: #1a6fc4;
+    color: #fff;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+  }
+  .card-header.orange { background: #e07b00; }
+  .card-header.red { background: #c0392b; }
+  .card-header.green { background: #1e8a4c; }
+  .card-header.gray { background: #555; }
+  .card-body { padding: 10px 12px; }
+
+  /* Checklist items */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.4;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .box {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .box.checked {
+    background: #1e8a4c;
+    border-color: #1e8a4c;
+    position: relative;
+  }
+  .box.checked::after {
+    content: '✓';
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+    position: absolute;
+    top: -1px;
+    left: 2px;
+  }
+  .box.blocked {
+    background: #f5c6cb;
+    border-color: #c0392b;
+    position: relative;
+  }
+  .box.blocked::after {
+    content: '!';
+    color: #c0392b;
+    font-size: 11px;
+    font-weight: 900;
+    position: absolute;
+    top: -1px;
+    left: 4px;
+  }
+  .item-text { flex: 1; }
+  .item-text .label { font-weight: 600; }
+  .item-text .detail { font-size: 11px; color: #666; margin-top: 1px; }
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    align-self: center;
+  }
+  .tag.done { background: #d4edda; color: #1e6e3a; }
+  .tag.pending { background: #fff3cd; color: #7a5000; }
+  .tag.blocked { background: #f8d7da; color: #721c24; }
+  .tag.paused { background: #e2e3e5; color: #383d41; }
+
+  /* Metrics row */
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { color: #444; }
+  .metric-value { font-weight: 700; font-size: 14px; }
+  .metric-value.good { color: #1e8a4c; }
+  .metric-value.warn { color: #e07b00; }
+  .metric-value.bad { color: #c0392b; }
+  .metric-value.neutral { color: #1a6fc4; }
+
+  /* Progress bar */
+  .progress-wrap { margin: 8px 0 4px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-bottom: 4px; }
+  .progress-bar { height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #1a6fc4; border-radius: 5px; }
+
+  /* Phase timeline */
+  .phases { display: flex; gap: 0; margin-bottom: 16px; }
+  .phase-step {
+    flex: 1;
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    border-right: none;
+    position: relative;
+  }
+  .phase-step:last-child { border-right: 1px solid #ddd; }
+  .phase-step.done { background: #d4edda; color: #1e6e3a; border-color: #1e8a4c; }
+  .phase-step.active { background: #fff3cd; color: #7a5000; border-color: #e6a817; font-weight: 800; }
+  .phase-step.future { background: #f8f9fa; color: #999; }
+  .phase-step .step-num { font-size: 10px; font-weight: 400; display: block; margin-bottom: 2px; }
+
+  /* Date field */
+  .date-field {
+    display: inline-block;
+    border-bottom: 1px solid #999;
+    min-width: 80px;
+    height: 14px;
+  }
+
+  /* Notes area */
+  .notes-lines { margin-top: 6px; }
+  .notes-lines .line {
+    border-bottom: 1px solid #ccc;
+    height: 22px;
+    margin-bottom: 2px;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+    margin-top: 16px;
+    font-size: 10px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { padding: 16px 20px; }
+    .card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <h1>🏊 Phoenix Pool Leads</h1>
+    <div class="sub">phxpoolpro.com · Alex Rivera · $99/lead exclusive</div>
+  </div>
+  <div class="header-right">
+    <div class="phase-badge">⚡ Phase 2 — Validation</div>
+    <div>Last updated: April 3, 2026</div>
+    <div>Go/No-Go: <strong>4 confirmed partners</strong></div>
+  </div>
+</div>
+
+<!-- Phase Timeline -->
+<div class="phases">
+  <div class="phase-step done"><span class="step-num">Phase 1</span>Research ✓</div>
+  <div class="phase-step active"><span class="step-num">Phase 2</span>▶ Validation</div>
+  <div class="phase-step future"><span class="step-num">Phase 3</span>Launch</div>
+  <div class="phase-step future"><span class="step-num">Phase 4</span>Scale</div>
+</div>
+
+<!-- Row 1: Blockers + Metrics -->
+<div class="grid">
+
+  <!-- Active Blockers -->
+  <div class="card">
+    <div class="card-header red">🚨 Active Blockers — Fix These First</div>
+    <div class="card-body">
+      <ul class="checklist">
+        <li>
+          <div class="box blocked"></div>
+          <div class="item-text">
+            <div class="label">Resend domain not verified</div>
+            <div class="detail">MX record blocked by Namecheap. Fix DNS → cron auto-fires test email. Namecheap live chat OR migrate to Cloudflare DNS.</div>
+          </div>
+          <span class="tag blocked">Blocked</span>
+        </li>
+        <li>
+          <div class="box blocked"></div>
+          <div class="item-text">
+            <div class="label">Supply: 1 of 4 confirmed partners</div>
+            <div class="detail">Need 3 more before activating ads. Cold email largely failed — switch to phone outreach.</div>
+          </div>
+          <span class="tag blocked">1/4</span>
+        </li>
+        <li>
+          <div class="box blocked"></div>
+          <div class="item-text">
+            <div class="label">3A Pools not closed yet</div>
+            <div class="detail">Replied interested. Need a close call — script is ready at ppl-assets/3a-pools-call-script.html</div>
+          </div>
+          <span class="tag pending">Call</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Key Metrics -->
+  <div class="card">
+    <div class="card-header gray">📊 Validation Metrics</div>
+    <div class="card-body">
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Partner Supply</span><span>1 / 4 confirmed</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Confirmed Partners</span>
+        <span class="metric-value warn">1</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Replied Interested</span>
+        <span class="metric-value neutral">1 (3A Pools)</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Outreach sent</span>
+        <span class="metric-value neutral">~120+</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Homeowner Leads</span>
+        <span class="metric-value bad">0</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Ad Spend</span>
+        <span class="metric-value neutral">$0</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Revenue</span>
+        <span class="metric-value neutral">$0</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Row 2: This Week + Infrastructure -->
+<div class="grid">
+
+  <!-- This Week Checklist -->
+  <div class="card">
+    <div class="card-header orange">📋 This Week — Immediate Actions</div>
+    <div class="card-body">
+      <ul class="checklist">
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Fix Resend MX record (Namecheap)</div>
+            <div class="detail">Live chat or migrate DNS to Cloudflare. Once done, cron verifies automatically.</div>
+          </div>
+          <span class="tag pending">Today</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Call 3A Pools — close as partner #2</div>
+            <div class="detail">sales@3apools.com · Script ready. Aim to confirm this week.</div>
+          </div>
+          <span class="tag pending">This week</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Phone outreach — 5–10 pool pros</div>
+            <div class="detail">Pull from existing 277-contact list. Phone >> email for this audience.</div>
+          </div>
+          <span class="tag pending">This week</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Organic demand seeding</div>
+            <div class="detail">Post in Phoenix homeowner Facebook groups + Nextdoor as Alex Rivera. Free. Do it now.</div>
+          </div>
+          <span class="tag pending">This week</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Full form test (after Resend verified)</div>
+            <div class="detail">Submit test lead → confirm email fires to Alex.Rivera.PPL@gmail.com</div>
+          </div>
+          <span class="tag pending">After fix</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Infrastructure Status -->
+  <div class="card">
+    <div class="card-header green">🏗️ Infrastructure Status</div>
+    <div class="card-body">
+      <ul class="checklist">
+        <li>
+          <div class="box checked"></div>
+          <div class="item-text"><div class="label">phxpoolpro.com — live, HTTPS, SSL</div></div>
+          <span class="tag done">✓ Live</span>
+        </li>
+        <li>
+          <div class="box checked"></div>
+          <div class="item-text"><div class="label">Landing page + lead form (Next.js)</div></div>
+          <span class="tag done">✓ Live</span>
+        </li>
+        <li>
+          <div class="box checked"></div>
+          <div class="item-text"><div class="label">Docker + Nginx + VPS deployed</div></div>
+          <span class="tag done">✓ Live</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Resend email verification</div>
+            <div class="detail">DKIM ✓ · MX blocked · SPF pending</div>
+          </div>
+          <span class="tag blocked">Blocked</span>
+        </li>
+        <li>
+          <div class="box checked"></div>
+          <div class="item-text"><div class="label">Google Ads campaign built</div></div>
+          <span class="tag paused">Paused</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Google Workspace (alex@phxpoolpro.com)</div>
+            <div class="detail">Using Alex.Rivera.PPL@gmail.com in the interim</div>
+          </div>
+          <span class="tag paused">Deferred</span>
+        </li>
+        <li>
+          <div class="box checked"></div>
+          <div class="item-text"><div class="label">homeprosaz.com purchased + parked</div></div>
+          <span class="tag done">✓ Parked</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- Row 3: Next Phase + Partners -->
+<div class="grid">
+
+  <!-- Next Phase Gate -->
+  <div class="card">
+    <div class="card-header">🚀 Next Phase Gate — What Unlocks Launch</div>
+    <div class="card-body">
+      <ul class="checklist">
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">4 confirmed partners signed</div>
+            <div class="detail">Currently 1/4. This is the hard gate — do not activate paid ads before hitting it.</div>
+          </div>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Resend verified + form tested end-to-end</div>
+            <div class="detail">Lead form → email notification → homeowner confirmation fully confirmed</div>
+          </div>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">First 5 homeowner leads generated</div>
+            <div class="detail">Organic or paid. Proves demand side works.</div>
+          </div>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">First match made + $99 collected</div>
+            <div class="detail">Proves the full loop. This is validation complete.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Key Contacts -->
+  <div class="card">
+    <div class="card-header gray">📇 Key Partner Contacts</div>
+    <div class="card-body">
+      <ul class="checklist">
+        <li>
+          <div class="box checked"></div>
+          <div class="item-text">
+            <div class="label">Proactive Pool & Spa</div>
+            <div class="detail">proactivepool@gmail.com · ✅ Confirmed Partner #1</div>
+          </div>
+          <span class="tag done">Confirmed</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">3A Pools</div>
+            <div class="detail">sales@3apools.com · Replied interested — close call pending</div>
+          </div>
+          <span class="tag pending">Close</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Partner #3 — TBD</div>
+            <div class="detail">Phone outreach from 277-contact list</div>
+          </div>
+          <span class="tag paused">Prospect</span>
+        </li>
+        <li>
+          <div class="box"></div>
+          <div class="item-text">
+            <div class="label">Partner #4 — TBD</div>
+            <div class="detail">Phone outreach from 277-contact list</div>
+          </div>
+          <span class="tag paused">Prospect</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- Notes -->
+<div class="card">
+  <div class="card-header gray">📝 Notes / Updates</div>
+  <div class="card-body">
+    <div class="notes-lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <span>Phoenix Pool Leads · phxpoolpro.com · Alex Rivera (Alex.Rivera.PPL@gmail.com)</span>
+  <span>VPS: 85.239.232.215 · Project dir: /srv/phxpoolpro/ · Printed: April 3, 2026</span>
+</div>
+
+</body>
+</html>

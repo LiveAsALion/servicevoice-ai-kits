@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServiceVoice AI — Project Checklist</title>
+  <style>
+    @media print {
+      body { margin: 0.5in; }
+      .no-print { display: none; }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 24px;
+      color: #111;
+      line-height: 1.5;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 2px; }
+    .subtitle { color: #555; font-size: 0.95rem; margin-bottom: 32px; }
+    .phase {
+      margin-bottom: 32px;
+      border-left: 4px solid #0f3460;
+      padding-left: 16px;
+    }
+    .phase.done { border-color: #28a745; }
+    .phase.active { border-color: #e94560; }
+    .phase h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge.done { background: #d4edda; color: #155724; }
+    .badge.active { background: #fde8ec; color: #721c24; }
+    .badge.pending { background: #e2e8f0; color: #444; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th {
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+      padding: 6px 8px;
+      border-bottom: 2px solid #eee;
+    }
+    td {
+      padding: 8px 8px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: top;
+    }
+    tr.done td { color: #888; }
+    tr.done td:first-child { text-decoration: line-through; }
+    .check { font-size: 1rem; }
+    .date { white-space: nowrap; font-size: 0.85rem; color: #555; }
+    .owner { font-size: 0.8rem; font-weight: 600; }
+    .owner.alistair { color: #0f3460; }
+    .owner.woz { color: #e94560; }
+    .goal-box {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      display: flex;
+      gap: 40px;
+    }
+    .goal-box div { flex: 1; }
+    .goal-box h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin: 0 0 6px; }
+    .goal-box p { margin: 0; font-weight: 600; font-size: 1.05rem; }
+    .updated { font-size: 0.8rem; color: #aaa; margin-top: 40px; text-align: right; }
+    .print-btn {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 8px 20px;
+      background: #0f3460;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn no-print" onclick="window.print()">🖨 Print / Save as PDF</button>
+
+  <h1>ServiceVoice AI Kits</h1>
+  <p class="subtitle">Project Checklist — Updated April 3, 2026 &nbsp;|&nbsp; Phase: <strong>Validation</strong> &nbsp;|&nbsp; Deadline: May 17, 2026</p>
+
+  <div class="goal-box">
+    <div>
+      <h3>45-Day Goal (by May 17)</h3>
+      <p>First sale closed</p>
+    </div>
+    <div>
+      <h3>6-Month Goal (by Oct 2026)</h3>
+      <p>10 sales + $500–$1,000/mo MRR</p>
+    </div>
+    <div>
+      <h3>Validation Threshold</h3>
+      <p>50 survey responses, ≥70% WTP at $397–$497</p>
+    </div>
+  </div>
+
+  <!-- PHASE 1: INFRASTRUCTURE -->
+  <div class="phase done">
+    <h2>Phase 1 — Infrastructure <span class="badge done">✓ Complete</span></h2>
+    <table>
+      <tr><th>Task</th><th>Owner</th><th>Done</th></tr>
+      <tr class="done"><td>Landing page built + SSL live (servicevoicekit.com)</td><td class="owner woz">Woz</td><td class="date">Apr 2</td></tr>
+      <tr class="done"><td>Meta Business Portfolio confirmed (ServiceVoiceAi)</td><td class="owner alistair">Alistair</td><td class="date">Apr 2</td></tr>
+      <tr class="done"><td>Ad account confirmed active (act_948122668150382, card ••3651)</td><td class="owner alistair">Alistair</td><td class="date">Apr 2</td></tr>
+      <tr class="done"><td>Meta developer account verified</td><td class="owner alistair">Alistair</td><td class="date">Apr 3</td></tr>
+      <tr class="done"><td>WozBot System User created + API token generated</td><td class="owner alistair">Alistair</td><td class="date">Apr 3</td></tr>
+      <tr class="done"><td>Privacy policy live (servicevoicekit.com/privacy.html)</td><td class="owner woz">Woz</td><td class="date">Apr 3</td></tr>
+      <tr class="done"><td>Ad creatives uploaded (3 images)</td><td class="owner woz">Woz</td><td class="date">Apr 3</td></tr>
+    </table>
+  </div>
+
+  <!-- PHASE 2: VALIDATION -->
+  <div class="phase active">
+    <h2>Phase 2 — Validation <span class="badge active">▶ In Progress</span></h2>
+    <table>
+      <tr><th>Task</th><th>Owner</th><th>Due</th></tr>
+      <tr class="done"><td>Meta validation campaign live ($8/day, 3 ads, Phoenix 30–55)</td><td class="owner woz">Woz</td><td class="date">Apr 3 ✓</td></tr>
+      <tr><td>☐ Monitor ad delivery — confirm impressions + clicks by end of day</td><td class="owner alistair">Alistair</td><td class="date">Apr 3</td></tr>
+      <tr><td>☐ Reach 50 survey responses (tally.so/r/eqEXQE)</td><td class="owner woz">Woz</td><td class="date">Apr 10</td></tr>
+      <tr><td>☐ Analyze survey — WTP at $397 vs $497, niche breakdown</td><td class="owner woz">Woz</td><td class="date">Apr 10</td></tr>
+      <tr><td>☐ Go/no-go decision on launch price ($397 vs $497) — Alistair approval required</td><td class="owner alistair">Alistair</td><td class="date">Apr 11</td></tr>
+      <tr><td>☐ Wire landing page email capture → ConvertKit</td><td class="owner woz">Woz</td><td class="date">Apr 7</td></tr>
+      <tr><td>☐ Review ad performance — adjust targeting or creative if CTR &lt; 1%</td><td class="owner woz">Woz</td><td class="date">Apr 7</td></tr>
+    </table>
+  </div>
+
+  <!-- PHASE 3: BUILD -->
+  <div class="phase">
+    <h2>Phase 3 — Build <span class="badge pending">Pending Validation</span></h2>
+    <table>
+      <tr><th>Task</th><th>Owner</th><th>Notes</th></tr>
+      <tr><td>☐ Build Retell AI voice agent template (HVAC first)</td><td class="owner woz">Woz</td><td>Start after go/no-go</td></tr>
+      <tr><td>☐ Create Make.com workflow (inbound call → calendar booking)</td><td class="owner woz">Woz</td><td></td></tr>
+      <tr><td>☐ Build Notion delivery hub + deployment guide</td><td class="owner woz">Woz</td><td></td></tr>
+      <tr><td>☐ Spanish Language Pack (bilingual scripts, $97 add-on)</td><td class="owner woz">Woz</td><td>Phoenix: 43% Hispanic market</td></tr>
+      <tr><td>☐ Set up Lemon Squeezy product page + checkout</td><td class="owner woz">Woz</td><td></td></tr>
+      <tr><td>☐ Produce onboarding video</td><td class="owner woz">Woz</td><td>10–20% of buyers will need it</td></tr>
+      <tr><td>☐ Build remaining 4 niche kits (Plumbing, Electrical, Landscaping, Pool)</td><td class="owner woz">Woz</td><td>After first sale</td></tr>
+    </table>
+  </div>
+
+  <!-- PHASE 4: LAUNCH -->
+  <div class="phase">
+    <h2>Phase 4 — Launch <span class="badge pending">Pending Build</span></h2>
+    <table>
+      <tr><th>Task</th><th>Owner</th><th>Trigger</th></tr>
+      <tr><td>☐ Scale Meta ads to $20/day</td><td class="owner woz">Woz</td><td>After first sale</td></tr>
+      <tr><td>☐ Introduce Done-With-You tier ($797)</td><td class="owner woz">Woz</td><td>After 20 sales</td></tr>
+      <tr><td>☐ ConvertKit email sequence live (5-email nurture)</td><td class="owner woz">Woz</td><td>Before launch</td></tr>
+      <tr><td>☐ Google Ads campaign (intent keywords)</td><td class="owner woz">Woz</td><td>After Meta validated</td></tr>
+      <tr><td>☐ Reddit organic posts (social proof, real numbers)</td><td class="owner alistair">Alistair</td><td>After 10 sales</td></tr>
+    </table>
+  </div>
+
+  <!-- KEY NUMBERS -->
+  <div class="phase">
+    <h2>Key Numbers to Watch</h2>
+    <table>
+      <tr><th>Metric</th><th>Target</th><th>Current</th></tr>
+      <tr><td>Survey responses</td><td>50+</td><td>0</td></tr>
+      <tr><td>WTP at $397–$497</td><td>≥70%</td><td>—</td></tr>
+      <tr><td>Meta CTR</td><td>&gt;1%</td><td>Launching</td></tr>
+      <tr><td>Meta CPL (cost per survey click)</td><td>&lt;$40</td><td>—</td></tr>
+      <tr><td>Sales</td><td>1 by May 17</td><td>0</td></tr>
+      <tr><td>MRR (subscriptions @ $47/mo)</td><td>$500–$1,000 by Oct</td><td>$0</td></tr>
+    </table>
+  </div>
+
+  <p class="updated">Printed: April 3, 2026 &nbsp;|&nbsp; <strong style="color:#0f3460">BLUE</strong> = Alistair &nbsp;|&nbsp; <strong style="color:#e94560">RED</strong> = Woz</p>
+
+</body>
+</html>

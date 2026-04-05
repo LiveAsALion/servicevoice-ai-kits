@@ -1,0 +1,67 @@
+{
+  "name": "Healthcare Guardian — Contact Form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "hcg-contact",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-node",
+      "name": "Contact Form Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "hcg-contact"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"success\": true }",
+        "options": {}
+      },
+      "id": "respond-node",
+      "name": "Respond to Form",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [460, 180]
+    },
+    {
+      "parameters": {
+        "fromEmail": "elias@healthcareguardiantraining.com",
+        "toEmail": "elias@healthcareguardiantraining.com",
+        "subject": "=New Contact: {{ $json.body.name }} — {{ $json.body.organization }}",
+        "emailType": "text",
+        "message": "=New contact form submission from healthcareguardiantraining.com\n\n---\n\nName: {{ $json.body.name }}\nTitle: {{ $json.body.title }}\nOrganization: {{ $json.body.organization }}\nEmail: {{ $json.body.email }}\nPhone: {{ $json.body.phone || 'Not provided' }}\n\nMessage:\n{{ $json.body.message }}\n\n---\nSubmitted via Healthcare Guardian contact form",
+        "options": {}
+      },
+      "id": "email-node",
+      "name": "Send Email to Elias",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [460, 420]
+    }
+  ],
+  "connections": {
+    "Contact Form Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Form",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Email to Elias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

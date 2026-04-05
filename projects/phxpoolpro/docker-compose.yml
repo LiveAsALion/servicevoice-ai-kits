@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+  phxpoolpro:
+    build: .
+    container_name: phxpoolpro
+    restart: unless-stopped
+
+    # ── Isolation: this container lives on its own network ──────────────────
+    # It has NO access to other containers, the host filesystem,
+    # or the OpenClaw system. It only talks to the outside world
+    # through Nginx on port 3000.
+    networks:
+      - phxpoolpro_net
+
+    # ── Port: only bind to localhost — Nginx proxies in ─────────────────────
+    ports:
+      - "127.0.0.1:3000:3000"
+
+    # ── Environment variables (injected at runtime, not in image) ────────────
+    environment:
+      - NODE_ENV=production
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - NOTIFY_EMAIL=${NOTIFY_EMAIL}
+      - FROM_EMAIL=${FROM_EMAIL}
+
+    # ── Read-only filesystem — container cannot write to host ────────────────
+    read_only: true
+    tmpfs:
+      - /tmp          # Next.js needs a writable /tmp
+
+    # ── No privilege escalation ──────────────────────────────────────────────
+    security_opt:
+      - no-new-privileges:true
+
+    # ── Resource limits — prevent runaway container ──────────────────────────
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+    # ── Health check ─────────────────────────────────────────────────────────
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+# ── Isolated bridge network — no cross-container traffic ──────────────────────
+networks:
+  phxpoolpro_net:
+    driver: bridge
+    internal: false   # needs outbound for Resend API calls

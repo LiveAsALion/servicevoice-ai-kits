@@ -37,4 +37,29 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
+## GitHub
+
+- PAT location: `/root/.openclaw/.env.secrets` → `GITHUB_PAT`
+- Scope: repo (push access to LiveAsALion repos)
+- Added: 2026-03-28
+
+---
+
+## Python / Playwright
+
+- Python venv: `/opt/playwright-venv`
+- Playwright binary: `/opt/playwright-venv/bin/playwright`
+- Run scripts: `sudo -u playwright /opt/playwright-venv/bin/python3 script.py`
+- Scripts directory: `/opt/playwright-scripts/` (owned by playwright user)
+- Chromium installed (headless browser automation)
+- Runs as non-root `playwright` system user (UID 109) — sandbox-safe
+- Use for: Gemini shared links, Google Docs, any page behind a login wall
+
+### Google Session Cookies
+- Store exported cookies at: `/root/.openclaw/workspace/secrets/google_cookies.json`
+- One-time export from your browser; Playwright loads them to bypass login
+- **Configured** — cookies saved 2026-03-29; expires ~2027-03-xx (check if Playwright auth fails)
+
+---
+
 Add whatever helps you do your job. This is your cheat sheet.

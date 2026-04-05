@@ -31,6 +31,13 @@
 - When blocked, report immediately with a workaround — don't spin wheels
 - Phoenix-first lens: 115°F summers, monsoon season, large Hispanic segment, trades culture
 
+## Outreach / Campaign Protocol (locked 2026-04-05)
+- Every outreach campaign (email, social, SMS) is prepared in full, then STOPPED before sending
+- Present to Alistair: who is receiving it, what it says, which campaign it belongs to
+- Alistair approves → then send. No exceptions.
+- This was implemented after doanything.com agent sent wrong-sender emails, fragmented campaigns, and contacted duplicate/invalid recipients
+- Applies to ALL platforms: email, Reddit, Facebook, Instagram, X, LinkedIn
+
 ## Bottleneck-Removal Mandate
 Every time a task requires Alistair's input or approval, ask: **"Can I remove this bottleneck permanently?"**
 - Flag what the blocker is (missing API key, no access to X, needs a credential, etc.)
@@ -84,6 +91,32 @@ Two cron jobs run at 2am and 3am daily (redundant — in case one misfires):
 - Complexity for its own sake is noise — don't add systems until a real limit is hit
 - A heartbeat system without HEARTBEAT.md is a timer that burns money — create the file at workspace initialization
 - HEARTBEAT.md should be created as part of any workspace bootstrap, not added reactively weeks later
+- **Async notification delivery:** Cron/isolated jobs cannot push Telegram DMs directly when the main session is inactive. When a cron job completes something important (e.g., SSL deployment), write the finding to a `memory/notify-pending.md` file. The next active main session or heartbeat picks it up and delivers it. Do not retry Telegram push in a loop — write-to-file is the reliable pattern.
+- **Cron DNS/retry loops:** When waiting on external propagation (DNS, cert issuance), use cron with a fixed interval rather than tight polling. Once the condition is met, mark the cron for removal and write the result to the daily note + notify-pending.md.
+
+## Social Media / Meta Platform — Hard-Won Rules
+_(Extracted from ServiceVoice AI Kits Phase 2 failures, 2026-03-22 to 2026-04-02)_
+
+- **Meta detects automated behavior fast** — accounts doing high-volume outreach, AI-generated content, or unusual activity patterns get disabled within days. Never use a business persona account (Malcolm Reid, Elias Reed, etc.) for Meta unless it's been aged manually and warmed up. Facebook/Instagram are hostile to new accounts pushing business content.
+- **Reddit bans first, asks questions never** — r/HVAC, r/Plumbing, r/smallbusiness have moderators and anti-spam bots that insta-ban promotional posts from low-karma accounts. A new account needs 6–8 weeks of genuine human-style posting before any business-related content. No shortcuts.
+- **Organic social validation is not a 48-hour strategy** — when a platform requires trust-building before posting, the clock on validation starts on warmup day 1, not on promo day 1. Factor this into project timelines.
+- **Paid ads are the faster validation path when accounts are new** — organic requires established accounts. If accounts are fresh or compromised, skip organic and go straight to paid. Meta/Google ads don't care about account age the same way.
+- **When a Meta/social account is disabled, don't rebuild under same identity** — use a trusted personal account or a different clean identity. Re-creating a disabled account from scratch on the same email/phone/device likely gets flagged again.
+- **Backup Meta ad access via System User token** — Malcolm Reid's Meta account being the sole admin of the ad account was a single point of failure. Future Meta setups: Alistair's personal account as backup admin on every Business Manager.
+
+## Flutter / Android Dev — Hard-Won Rules
+_(Extracted from SpeedShield build sessions 2026-03-29 to 2026-04-01)_
+
+- **Manifest ≠ Runtime Permission** — every permission in AndroidManifest.xml that is `dangerous` on Android 12+ also needs an explicit runtime `Permission.xxx.request()` call in Dart. Manifest-only gets you nothing. Silent nulls are the symptom.
+- **Native SharedPreferences key contract** — if Kotlin code reads a specific flat key (e.g., `flutter.vehicleBluetoothDevices`), Dart/Flutter MUST write that exact key. A single JSON blob under one key does not satisfy multiple readers. Write flat keys AND the blob.
+- **BT detection: native beats Flutter in background** — FlutterBluePlus is reliable in foreground; in background Dart isolates it is unreliable. Use native `BroadcastReceiver` (ACL_CONNECTED/DISCONNECTED) → SharedPreferences → Dart for production BT detection.
+- **Doze is a first-class constraint** — any app doing background location, BT, or activity detection must be Doze-exempt or use Doze-exempt APIs. Native BroadcastReceivers and Google Play Services ActivityRecognition survive Doze; Flutter Dart isolates do not.
+- **Android 13+ foreground services need POST_NOTIFICATIONS** — both in manifest and at runtime, before the service starts. Missing it causes immediate crash on Android 14.
+- **Never declare a receiver in AndroidManifest without the backing Kotlin class** — ClassNotFoundException crash on every launch.
+- **Notification channels belong in Application.onCreate()** — not MainActivity. The channel must exist before any service or activity can use it.
+- **Tech stack table must stay current** — when a Flutter plugin is replaced with native code, update the project file in the same session. Stale entries (wrong library names) mislead every future session loading the file.
+- **MAC address over name for BT matching** — device names can change or collide; MAC addresses are stable hardware identifiers. Always store and match on MAC for production BT device detection.
+- **Double-TTS in foreground: foreground flag pattern** — when both a foreground UI widget and a background service each hold a ProximityService instance, use a SharedPreferences boolean flag to signal foreground state. Background service checks the flag and skips TTS when UI is active.
 
 ## Reference Points (Don't Recap — Just Use)
 - *Beyond OODA* by Varg Freeborn — read it

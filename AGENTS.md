@@ -28,9 +28,14 @@ Don't ask permission. Just do it.
 ### 🔄 Session Load Protocol (Mandatory — No Exceptions)
 
 **At the start of EVERY conversation — before responding to anything — read:**
-1. The relevant project file (if in a project topic/thread)
+1. The relevant project file (if in a project topic/thread) — **NO EXCEPTIONS. This applies to every session, every topic, private or group.**
 2. Today's daily note (`memory/YYYY-MM-DD.md`)
 3. Yesterday's daily note if today's doesn't exist yet
+
+**Topic → Project File Mapping (always resolve before first reply):**
+- If the session is in a named topic or thread, identify the corresponding project file in `life/projects/` and read it before doing anything else.
+- If the topic or project is ambiguous, check the Active Project Index in `MEMORY.md` to resolve it.
+- There is no scenario where "I defaulted to another project" is acceptable. Read the file. Always.
 
 **This is non-negotiable.** Alistair must never have to:
 - Re-explain project status
@@ -39,6 +44,16 @@ Don't ask permission. Just do it.
 - Remind you of context from a prior session
 
 If you are not current before the first reply, you are failing at the job. Read first. Always.
+
+### 📤 Session Close Protocol (Mandatory — No Exceptions)
+
+**Before every session ends — or when significant decisions/progress have been made — update the project file:**
+1. Write any new decisions to the Decisions Log with today's date.
+2. Update status fields, next steps, and any infrastructure/asset changes.
+3. If a decision was made verbally in chat but not yet written, write it now.
+4. **Do not wait to be asked.** If the conversation produced anything worth remembering, it goes in the file before the session closes.
+
+**The rule:** If it happened in chat and isn't in the project file, it doesn't exist. Session history resets. Files don't. Write it down.
 
 ## Memory
 
