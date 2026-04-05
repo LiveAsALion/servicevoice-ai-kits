@@ -52,6 +52,9 @@ No strategy has been locked. Candidates to evaluate:
 | 2026-03-28 | File created as stub | Project referenced in MEMORY.md but no disk file existed — ghost reference eliminated |
 | 2026-03-28 | Phase: Build | Active development, not yet validated |
 | 2026-03-28 | Alpaca API confirmed as brokerage layer | Already in Alistair's tool stack |
+| 2026-04-05 | Alpaca API keys not yet in .env.secrets | ALPACA_API_KEY and ALPACA_SECRET_KEY are placeholder — need real keys before any development can start |
+| 2026-04-05 | GitHub PAT confirmed in .env.secrets | GITHUB_PAT active — repo can be created when ready |
+| 2026-04-05 | Project status: dormant | No active development. Lowest priority of all active projects. No action until ServiceVoice and HCG hit validation gates. |
 
 ---
 

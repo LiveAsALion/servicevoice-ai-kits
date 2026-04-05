@@ -54,7 +54,22 @@ A content brand targeting first responders (LEO, firefighters, paramedics, nurse
 ---
 
 ## Next Actions
-- [ ] Alistair to provide: HeyGen API key, Avatar ID, Voice ID
-- [ ] Review sample video render — adjust tone/pacing if needed
-- [ ] Build automation pipeline once credentials received
+- [ ] HeyGen Business tier upgrade (deferred — waiting for HCG validation first)
+- [ ] Once HeyGen is live: provide Avatar ID and Voice ID for Cole Mercer
+- [ ] Build HeyGen → Ayrshare automation pipeline (Ayrshare API key ✅ already in .env.secrets; Instagram + TikTok connected)
 - [ ] Define product / affiliate structure (what Cole actually recommends)
+- [ ] Review sample video render once HeyGen is active
+
+## Infrastructure Status (2026-04-05)
+| Item | Status |
+|---|---|
+| HeyGen account | ✅ Active (free tier — 0 API quota; Business upgrade needed for API + SCORM) |
+| HeyGen API key | ✅ In .env.secrets (HEYGEN_API_KEY) — unusable until Business upgrade |
+| Ayrshare API key | ✅ In .env.secrets |
+| Instagram (@fueledforduty) | ✅ Connected to Ayrshare |
+| TikTok (@fueledforduty) | ✅ Connected to Ayrshare |
+| Cole Mercer avatar | ✅ Created in HeyGen by Alistair (2026-03-27) — Avatar/Voice IDs not yet logged |
+| Cole Mercer voice clone | ✅ Created in HeyGen by Alistair (2026-03-27) |
+
+## Blocker
+**HeyGen Business tier** — required for API access and video production. Intentionally deferred until HCG validation gate is hit (~10+ positive responses). One month subscription at ~$149 covers both HCG curriculum production AND FFD content batch. Purchase together to maximize the single month.
