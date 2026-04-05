@@ -127,12 +127,14 @@
 ### Make.com
 - **Account:** servicevoiceai@gmail.com (org ID: 7159998)
 - **API key:** MAKE_API_KEY in .env.secrets
-- **4 scenarios built (all inactive — pending Google/Twilio connections):**
+- **4 scenarios built (all inactive):**
   - SVAI - Lead Capture (ID: 4628289)
   - SVAI - Emergency Escalation (ID: 4628291)
   - SVAI - Confirmation SMS (ID: 4628292)
   - SVAI - Founder Intelligence Log (ID: 4628293)
-- **Remaining:** Export blueprint JSON files → host → link in Notion hub
+- **To activate scenarios, buyer must connect:** Google Sheets (OAuth), Gmail (same Google account), Google Calendar (same), Twilio (optional, for SMS)
+- **Woz cannot activate these** — connections require buyer's own Google/Twilio accounts; that is by design (buyer owns their data)
+- **Remaining:** Export blueprint JSON files → host on GitHub or Google Drive → link inside Notion hub so buyers can download and import
 
 ### Meta Ads
 - **Business Portfolio:** ServiceVoiceAi (Alistair's personal account)
@@ -148,7 +150,8 @@
   - 6919079410386 — "Phoenix HVAC, plumbing, and electrical owners..."
 
 ### Surveys
-- **Tally:** https://tally.so/r/eqEXQE — live, responses: CHECK CURRENT COUNT
+- **Tally:** https://tally.so/r/eqEXQE — live, responses: **0 as of 2026-04-05 05:17 MST**
+- **Tally form ID:** q4WNy2 | Status: Published | Not closed
 - **Google Form (backup):** https://forms.gle/cynGrnhaBwonGcMS6
 - **Tally API key:** TALLY_API_KEY in .env.secrets
 - **Waitlist Sheet ID:** 14xf8wBIl6lJFaTcnZhn57F-BZwtj-2H2qbHOjpOxXTk
