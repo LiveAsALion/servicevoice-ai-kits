@@ -312,3 +312,16 @@
 - Monsoon season roofing scripts (July–Sept)
 - Bilingual auto-detection + Spanish Pack
 - AZ local pricing benchmarks in scripts
+
+## Decisions Added from DM Session (2026-04-05 continued)
+
+| Date | Decision | Rationale |
+|---|---|---|
+| 2026-04-05 | ConvertKit dropped entirely for now | SMTP direct send sufficient for 0-20 customers. ConvertKit reminder cron set at 20-customer threshold (cron ID: bc78e06b). |
+| 2026-04-05 | Reddit comment karma threshold set at 20 (not 50) | 20 comment karma in relevant subreddits is meaningful signal; global karma number is less relevant. Age threshold remains 30 days. Daily check cron live (ID: e3a51185). |
+| 2026-04-05 | Daily 8am Phoenix morning brief live | Includes ServiceVoice survey count, Meta ad spend, Reddit karma, Alistair tasks. Cron ID: c2f5c176. |
+| 2026-04-05 | Skill-building rule established | Any task done 3+ times requires a Playwright automation skill or SMTP outreach skill. Rule written to AGENTS.md and operating-principles.md. |
+| 2026-04-05 | Model routing strategy planned | Sonnet remains primary reasoning brain. Haiku or Gemini Flash for routine crons. Pending API keys: Perplexity (research), Grok (social content/trends), Codex (code tasks). |
+| 2026-04-05 | Notion delivery hub fully live | Built via API: 8 sections, 5 niche script sub-pages. WozBot integration active. Delivery = Notion link (no ZIP). |
+| 2026-04-05 | Make.com blueprint JSONs remaining | Need to export 3 scenario blueprints → host → link inside Notion hub. Last remaining delivery asset. |
+| 2026-04-05 | Lemon Squeezy store fully live | All 3 products published with active buy URLs. Payout confirmed connected. |

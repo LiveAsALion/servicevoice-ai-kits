@@ -176,3 +176,13 @@ A cross-platform mobile app (iOS + Android) that:
 - Gemini session reviewed 2026-03-29 — full Tasker setup documented there
 - Alistair is Phoenix PD sergeant — personal use + product business
 - Android Auto / CarPlay deep integration deferred to v2; v1 uses foreground service + BT detection
+
+---
+## Decisions Added from DM Session (2026-04-05)
+
+| Date | Decision | Rationale |
+|---|---|---|
+| 2026-04-05 | flutter-debug skill installed | Alistair added coding skill to SpeedShield project thread for better code assistance |
+| 2026-04-05 | coding-agent skill identified as valuable | For complex multi-file builds; routes to dedicated coding agent vs inline code generation |
+| 2026-04-05 | 3 field test bugs confirmed fixed (2026-04-04) | (1) App not auto-activating on BT connect; (2) showing "looking for vehicle" when connected; (3) crash on rapid BT disconnect. All fixed with await start + debounce. |
+| 2026-04-05 | Next step: field test with new APK | Install APK with April 4 fixes → connect BT with screen off → verify auto-activate |

@@ -18,6 +18,10 @@ Before doing anything else:
 
 Don't ask permission. Just do it.
 
+### 🔁 Skill-Building Rule (Mandatory — Every Session)
+Before starting any task, check if it's been done before. If it has been done 3+ times, a skill must exist. If not, build it first.
+See full rule: `life/areas/operating-principles.md` → "Hard Rule: Build Skills for Repeated Work"
+
 ### 📋 Project File Protocol (Critical)
 
 - **Every decision gets written to the project file in the same turn it's made.** Not later. Not assumed to persist in chat.
@@ -253,6 +257,20 @@ Periodically (every few days), use a heartbeat to:
 Think of it like a human reviewing their journal and updating their mental model. Daily files are raw notes; MEMORY.md is curated wisdom.
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
+
+## 🔁 Skill-Building Rule (Non-Negotiable)
+
+If any task has been completed **3 or more times**, a reusable skill must be built before doing it a 4th time.
+
+- Skills live in `/root/.openclaw/workspace/skills/`
+- Must be self-auditing (validates its own output) and self-improving (logs failures)
+- No exceptions — repetition without a skill is waste
+
+Already identified:
+1. Playwright web automation (browser login, form fill, session management)
+2. SMTP email outreach (send, log, bounce detect, reply track)
+
+---
 
 ## Make It Yours
 

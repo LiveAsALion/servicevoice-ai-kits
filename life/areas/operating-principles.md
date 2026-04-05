@@ -122,3 +122,15 @@ _(Extracted from SpeedShield build sessions 2026-03-29 to 2026-04-01)_
 - *Beyond OODA* by Varg Freeborn — read it
 - *Red Rising* series — taste reference for Sci-Fi/Fantasy
 - K-9 Unit has faced external criticism — navigated without losing direction
+
+## Hard Rule: Build Skills for Repeated Work (Effective 2026-04-05)
+**If Woz has completed the same type of task 3 or more times, a reusable skill must be built.**
+- Skill must be self-auditing (validates its own output)
+- Skill must be self-improving (logs failures/successes for future refinement)
+- This prevents reinventing scaffolding, reduces errors, and cuts execution time
+- Skill location: `/root/.openclaw/workspace/skills/` (custom skills directory)
+- Reference in AGENTS.md so every session enforces this rule
+
+Repeatable workflows already identified for skill creation:
+1. **Playwright web automation** — browser launch, login, session, error handling
+2. **SMTP email outreach** — send, log, bounce detect, reply track

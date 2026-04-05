@@ -253,3 +253,15 @@ These were created in the doanything.com workspace and referenced in chat histor
 - Email outreach reputation at risk — wrong-sender issue on Day 1 emails (sent from malcolm.reid@); alistair@ warm-up completes April 7; resend Day 1 + overdue Day 3 follow-ups from alistair@ on April 8
 - Warm-up deliverability issue fixed (2026-04-02) — spam subject lines banned from cron pool
 
+
+---
+## Decisions Added from DM Session (2026-04-05)
+
+| Date | Decision | Rationale |
+|---|---|---|
+| 2026-04-05 | Outreach pre-approval protocol locked | Every campaign stops at draft. Alistair approves before send. No exceptions. Applies to email, social, SMS, all platforms. Result of doanything.com agent failures. |
+| 2026-04-05 | HeyGen deferred until post-validation | Intentional financial decision — maximize single Business tier month after validation signals received. Not a blocker issue. |
+| 2026-04-05 | Email warm-up complete | alistair@ warm-up ran through April 7. Outreach launches April 8. 17 Day 1 replies confirmed high deliverability. |
+| 2026-04-05 | Website infrastructure confirmed | healthcareguardiantraining.com live on VPS (85.239.232.215); Nginx; SSL; .net and .org redirect to .com |
+| 2026-04-05 | SMTP access confirmed operational | HCG_SMTP_ADDRESS and HCG_SMTP_APP_PASSWORD in .env.secrets; Woz has send access via smtp.gmail.com:587 |
+| 2026-04-05 | Daily morning brief includes HCG tasks | 8am Phoenix daily brief will surface HCG outreach tasks and blockers to Alistair |

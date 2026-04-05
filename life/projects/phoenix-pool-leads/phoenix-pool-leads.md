@@ -186,3 +186,14 @@
 **What's weak:** Supply validation stalled at 1/4 after 120+ emails (organic cold email strategy largely failed), zero demand generated, no product built yet (matching is manual), April–May window closing before Phoenix summer peak.
 
 **Critical path to viability:** Get to 4 confirmed partners → activate Google Ads → generate first 5 homeowner leads → make first match → prove the loop works.
+
+---
+## Decisions Added from DM Session (2026-04-05)
+
+| Date | Decision | Rationale |
+|---|---|---|
+| 2026-04-05 | Outreach pre-approval protocol locked | Every campaign stops at draft. Alistair approves before send. Applies to all PPL outreach. |
+| 2026-04-05 | Twilio deferred | Not useful until PPL has confirmed partners with phone numbers to text. Revisit at 4+ partners. |
+| 2026-04-05 | SPF record fix still needed | phxpoolpro.com SPF missing spf.resend.com — Alistair action in Namecheap DNS. Blocks Resend verification. |
+| 2026-04-05 | 3A Pools close call still pending | Replied interested; Alistair needs to call to close as partner #2. Critical path to validation threshold. |
+| 2026-04-05 | Daily morning brief includes PPL tasks | 8am Phoenix daily brief will surface PPL blockers and Alistair actions |
