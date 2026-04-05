@@ -192,8 +192,9 @@
 
 | Date | Decision | Rationale |
 |---|---|---|
-| 2026-04-05 | Outreach pre-approval protocol locked | Every campaign stops at draft. Alistair approves before send. Applies to all PPL outreach. |
-| 2026-04-05 | Twilio deferred | Not useful until PPL has confirmed partners with phone numbers to text. Revisit at 4+ partners. |
-| 2026-04-05 | SPF record fix still needed | phxpoolpro.com SPF missing spf.resend.com — Alistair action in Namecheap DNS. Blocks Resend verification. |
-| 2026-04-05 | 3A Pools close call still pending | Replied interested; Alistair needs to call to close as partner #2. Critical path to validation threshold. |
-| 2026-04-05 | Daily morning brief includes PPL tasks | 8am Phoenix daily brief will surface PPL blockers and Alistair actions |
+| 2026-04-05 | Outreach pre-approval protocol locked | Woz drafts all partner outreach (new contacts, follow-ups, sequences) and presents: who, what, which campaign. Alistair approves before any send. Current outreach status: 1 confirmed partner (Proactive Pool & Spa), 1 warm lead (3A Pools — needs close call), ~120 emails sent total. |
+| 2026-04-05 | 3A Pools close call — Alistair action | sales@3apools.com replied interested. Alistair must call to close as partner #2. Close script at life/projects/phoenix-pool-leads/assets/3a-pools-call-script.html. Threshold = 4 confirmed partners before activating paid ads. |
+| 2026-04-05 | SPF record fix — Alistair action | phxpoolpro.com SPF record missing spf.resend.com — must add in Namecheap DNS. Blocks Resend domain verification which blocks form submissions from sending. High priority. |
+| 2026-04-05 | Twilio deferred | No SMS capability needed until confirmed partners have phone numbers on file. Revisit when 4+ partners confirmed. |
+| 2026-04-05 | Resend verification cron active | Cron polling ~90min for Resend domain verification (cron ID: 5bf75689). Auto-sends test email and disables itself when verified. |
+| 2026-04-05 | Daily morning brief includes PPL tasks | 8am Phoenix brief surfaces: partner count, Resend status, SPF fix status, 3A Pools call reminder until closed |

@@ -259,9 +259,9 @@ These were created in the doanything.com workspace and referenced in chat histor
 
 | Date | Decision | Rationale |
 |---|---|---|
-| 2026-04-05 | Outreach pre-approval protocol locked | Every campaign stops at draft. Alistair approves before send. No exceptions. Applies to email, social, SMS, all platforms. Result of doanything.com agent failures. |
-| 2026-04-05 | HeyGen deferred until post-validation | Intentional financial decision — maximize single Business tier month after validation signals received. Not a blocker issue. |
-| 2026-04-05 | Email warm-up complete | alistair@ warm-up ran through April 7. Outreach launches April 8. 17 Day 1 replies confirmed high deliverability. |
-| 2026-04-05 | Website infrastructure confirmed | healthcareguardiantraining.com live on VPS (85.239.232.215); Nginx; SSL; .net and .org redirect to .com |
-| 2026-04-05 | SMTP access confirmed operational | HCG_SMTP_ADDRESS and HCG_SMTP_APP_PASSWORD in .env.secrets; Woz has send access via smtp.gmail.com:587 |
-| 2026-04-05 | Daily morning brief includes HCG tasks | 8am Phoenix daily brief will surface HCG outreach tasks and blockers to Alistair |
+| 2026-04-05 | Outreach pre-approval protocol locked | Woz drafts all campaigns (email sequences, follow-ups, new prospect batches) and presents: who is receiving it, exact content, which campaign. Alistair approves, then Woz sends. No exceptions. Triggered by doanything.com wrong-sender incident. |
+| 2026-04-05 | HeyGen deferred until post-validation | Intentional — maximize single Business tier month by waiting until after validation gate opens. Not a capability gap. |
+| 2026-04-05 | Outreach launch: April 8 from alistair@ | Warm-up complete (17 Day 1 replies = 100% reply rate). First action April 8: resend Day 1 emails to all wrong-sender prospects + send overdue Day 3 follow-ups. Woz will draft both batches for Alistair approval before sending. |
+| 2026-04-05 | Uncontacted Tier 1 prospects still pending | Denise Hackett (AZ Spine), Terresa Thomas (AZ Specialty), Susan Kelley (Gila River), Joy Upshaw (Tucson Medical), Marla Pino-Ramirez (Northpark) — not yet contacted. Tier 2 (VP Patient Safety) and Tier 3 (HR Directors) also not started. |
+| 2026-04-05 | SMTP confirmed operational | alistair@healthcareguardiantraining.com; credentials in .env.secrets (HCG_SMTP_APP_PASSWORD); Woz sends via smtp.gmail.com:587 |
+| 2026-04-05 | Daily morning brief includes HCG tasks | 8am Phoenix brief will surface: outreach status, response count, next prospect batch, and any Alistair actions required |
