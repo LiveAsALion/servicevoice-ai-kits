@@ -78,7 +78,7 @@
       "version": 2,
       "parameters": {
         "__IMTCONN__": null,
-        "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+        "spreadsheetId": "1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s",
         "sheetId": "Leads",
         "includesHeaders": true,
         "valueRenderOption": "FORMATTED_VALUE",
@@ -124,7 +124,7 @@
     "zone": "us2.make.com",
     "notes": [
       {
-        "content": "SETUP REQUIRED:\n1. Connect Twilio account (SID + Auth Token)\n2. Connect Gmail account\n3. Connect Google Sheets account\n4. Replace REPLACE_WITH_YOUR_TWILIO_NUMBER with your Twilio number (e.g. +16025551234)\n5. Replace REPLACE_WITH_YOUR_PHONE_NUMBER with your mobile number\n6. Replace REPLACE_WITH_ONCALL_TECH_PHONE with your on-call tech's number\n7. Replace REPLACE_WITH_YOUR_EMAIL with your email address\n8. Replace REPLACE_WITH_YOUR_SPREADSHEET_ID with your Google Sheets ID\n\nTRIGGER: This scenario can be triggered two ways:\n  Option A — Standalone: Configure Retell AI to call this webhook directly for emergency calls\n  Option B — From Lead Capture: The Lead Capture scenario routes emergency calls here automatically\n  Recommended: Use Option B (Lead Capture handles routing). Only use this standalone if you want a separate webhook for emergencies."
+        "content": "SETUP REQUIRED:\n1. Connect Twilio account (SID + Auth Token)\n2. Connect Gmail account\n3. Connect Google Sheets account\n4. Replace REPLACE_WITH_YOUR_TWILIO_NUMBER with your Twilio number (e.g. +16025551234)\n5. Replace REPLACE_WITH_YOUR_PHONE_NUMBER with your mobile number\n6. Replace REPLACE_WITH_ONCALL_TECH_PHONE with your on-call tech's number\n7. Replace REPLACE_WITH_YOUR_EMAIL with your email address\n8. Replace 1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s with your Google Sheets ID\n\nTRIGGER: This scenario can be triggered two ways:\n  Option A — Standalone: Configure Retell AI to call this webhook directly for emergency calls\n  Option B — From Lead Capture: The Lead Capture scenario routes emergency calls here automatically\n  Recommended: Use Option B (Lead Capture handles routing). Only use this standalone if you want a separate webhook for emergencies."
       }
     ]
   }
