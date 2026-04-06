@@ -40,7 +40,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s",
                 "sheetId": "Leads",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -136,7 +136,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s",
                 "sheetId": "Leads",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -257,7 +257,7 @@
     "zone": "us2.make.com",
     "notes": [
       {
-        "content": "SETUP REQUIRED — Replace all REPLACE_WITH_ placeholders:\n1. Connect your Google account (Sheets + Calendar)\n2. Connect your Gmail account\n3. Connect your Twilio account\n4. Set REPLACE_WITH_YOUR_SPREADSHEET_ID to your Google Sheet ID\n5. Set REPLACE_WITH_YOUR_EMAIL to your notification email\n6. Set REPLACE_WITH_YOUR_PHONE_NUMBER to your mobile number\n7. Set REPLACE_WITH_YOUR_TWILIO_NUMBER to your Twilio phone number\n8. Set REPLACE_WITH_ONCALL_TECH_PHONE to your on-call tech's number (can be same as owner)\n9. Copy the webhook URL and paste it into Retell AI → Agent → Webhooks → Call Ended"
+        "content": "SETUP REQUIRED — Replace all REPLACE_WITH_ placeholders:\n1. Connect your Google account (Sheets + Calendar)\n2. Connect your Gmail account\n3. Connect your Twilio account\n4. Set 1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s to your Google Sheet ID\n5. Set REPLACE_WITH_YOUR_EMAIL to your notification email\n6. Set REPLACE_WITH_YOUR_PHONE_NUMBER to your mobile number\n7. Set REPLACE_WITH_YOUR_TWILIO_NUMBER to your Twilio phone number\n8. Set REPLACE_WITH_ONCALL_TECH_PHONE to your on-call tech's number (can be same as owner)\n9. Copy the webhook URL and paste it into Retell AI → Agent → Webhooks → Call Ended"
       }
     ]
   }
