@@ -1,0 +1,333 @@
+{
+  "name": "SVAI - Founder Intelligence Log",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": null,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "label": "SVAI Founder Intelligence Webhook",
+              "data": { "editable": true }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "parameters": {},
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 300, "y": 0 }
+      },
+      "routes": [
+        {
+          "flow": [
+            {
+              "id": 3,
+              "module": "google-sheets:addRow",
+              "version": 2,
+              "parameters": {
+                "__IMTCONN__": null,
+                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "sheetId": "Founder Intelligence Log",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "insertDataOption": "INSERT_ROWS",
+                "majorDimension": "ROWS"
+              },
+              "mapper": {
+                "Timestamp": "{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}}",
+                "Event Type": "lead",
+                "Buyer ID": "n/a",
+                "Niche": "{{1.niche}}",
+                "Channel": "{{1.channel}}",
+                "Language": "{{1.language}}",
+                "Urgency": "{{1.urgency}}",
+                "Revenue": "0",
+                "Notes": "Caller: {{1.caller_name}} | Issue: {{1.issue_description}} | Address: {{1.address}}",
+                "Status": "new"
+              },
+              "metadata": {
+                "designer": { "x": 600, "y": -200 }
+              }
+            }
+          ],
+          "filter": {
+            "name": "Inbound Lead",
+            "conditions": [
+              [
+                {
+                  "a": "{{1.event_type}}",
+                  "b": "lead",
+                  "o": "text:equal"
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "flow": [
+            {
+              "id": 4,
+              "module": "google-sheets:addRow",
+              "version": 2,
+              "parameters": {
+                "__IMTCONN__": null,
+                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "sheetId": "Founder Intelligence Log",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "insertDataOption": "INSERT_ROWS",
+                "majorDimension": "ROWS"
+              },
+              "mapper": {
+                "Timestamp": "{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}}",
+                "Event Type": "purchase",
+                "Buyer ID": "{{sha256(1.customer_email)}}",
+                "Niche": "{{1.niche}}",
+                "Channel": "direct",
+                "Language": "{{1.language}}",
+                "Urgency": "n/a",
+                "Revenue": "{{1.amount}}",
+                "Notes": "Product: {{1.product_name}} | Order: {{1.order_id}}",
+                "Status": "active"
+              },
+              "metadata": {
+                "designer": { "x": 600, "y": -50 }
+              }
+            }
+          ],
+          "filter": {
+            "name": "Purchase",
+            "conditions": [
+              [
+                {
+                  "a": "{{1.event_type}}",
+                  "b": "purchase",
+                  "o": "text:equal"
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "flow": [
+            {
+              "id": 5,
+              "module": "google-sheets:addRow",
+              "version": 2,
+              "parameters": {
+                "__IMTCONN__": null,
+                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "sheetId": "Founder Intelligence Log",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "insertDataOption": "INSERT_ROWS",
+                "majorDimension": "ROWS"
+              },
+              "mapper": {
+                "Timestamp": "{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}}",
+                "Event Type": "refund",
+                "Buyer ID": "{{sha256(1.customer_email)}}",
+                "Niche": "{{1.niche}}",
+                "Channel": "direct",
+                "Language": "n/a",
+                "Urgency": "n/a",
+                "Revenue": "-{{1.amount}}",
+                "Notes": "Refund reason: {{1.reason}} | Order: {{1.order_id}}",
+                "Status": "churned"
+              },
+              "metadata": {
+                "designer": { "x": 600, "y": 100 }
+              }
+            }
+          ],
+          "filter": {
+            "name": "Refund",
+            "conditions": [
+              [
+                {
+                  "a": "{{1.event_type}}",
+                  "b": "refund",
+                  "o": "text:equal"
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "flow": [
+            {
+              "id": 6,
+              "module": "google-sheets:addRow",
+              "version": 2,
+              "parameters": {
+                "__IMTCONN__": null,
+                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "sheetId": "Founder Intelligence Log",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "insertDataOption": "INSERT_ROWS",
+                "majorDimension": "ROWS"
+              },
+              "mapper": {
+                "Timestamp": "{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}}",
+                "Event Type": "subscription_start",
+                "Buyer ID": "{{sha256(1.customer_email)}}",
+                "Niche": "{{1.niche}}",
+                "Channel": "direct",
+                "Language": "n/a",
+                "Urgency": "n/a",
+                "Revenue": "{{1.amount}}",
+                "Notes": "Subscription started: {{1.product_name}}",
+                "Status": "active"
+              },
+              "metadata": {
+                "designer": { "x": 600, "y": 250 }
+              }
+            }
+          ],
+          "filter": {
+            "name": "Subscription Start",
+            "conditions": [
+              [
+                {
+                  "a": "{{1.event_type}}",
+                  "b": "subscription_start",
+                  "o": "text:equal"
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "flow": [
+            {
+              "id": 7,
+              "module": "google-sheets:addRow",
+              "version": 2,
+              "parameters": {
+                "__IMTCONN__": null,
+                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "sheetId": "Founder Intelligence Log",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "insertDataOption": "INSERT_ROWS",
+                "majorDimension": "ROWS"
+              },
+              "mapper": {
+                "Timestamp": "{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}}",
+                "Event Type": "subscription_cancel",
+                "Buyer ID": "{{sha256(1.customer_email)}}",
+                "Niche": "{{1.niche}}",
+                "Channel": "direct",
+                "Language": "n/a",
+                "Urgency": "n/a",
+                "Revenue": "0",
+                "Notes": "Cancellation reason: {{1.reason}}",
+                "Status": "churned"
+              },
+              "metadata": {
+                "designer": { "x": 600, "y": 400 }
+              }
+            }
+          ],
+          "filter": {
+            "name": "Subscription Cancel",
+            "conditions": [
+              [
+                {
+                  "a": "{{1.event_type}}",
+                  "b": "subscription_cancel",
+                  "o": "text:equal"
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "flow": [
+            {
+              "id": 8,
+              "module": "google-sheets:addRow",
+              "version": 2,
+              "parameters": {
+                "__IMTCONN__": null,
+                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "sheetId": "Founder Intelligence Log",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "insertDataOption": "INSERT_ROWS",
+                "majorDimension": "ROWS"
+              },
+              "mapper": {
+                "Timestamp": "{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}}",
+                "Event Type": "survey_response",
+                "Buyer ID": "n/a",
+                "Niche": "{{1.niche}}",
+                "Channel": "{{1.channel}}",
+                "Language": "{{1.language}}",
+                "Urgency": "n/a",
+                "Revenue": "0",
+                "Notes": "{{1.notes}}",
+                "Status": "new"
+              },
+              "metadata": {
+                "designer": { "x": 600, "y": 550 }
+              }
+            }
+          ],
+          "filter": {
+            "name": "Survey Response",
+            "conditions": [
+              [
+                {
+                  "a": "{{1.event_type}}",
+                  "b": "survey_response",
+                  "o": "text:equal"
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com",
+    "notes": [
+      {
+        "content": "SETUP REQUIRED:\n1. Connect Google Sheets account\n2. Replace REPLACE_WITH_YOUR_SPREADSHEET_ID with your Google Sheets ID\n3. Ensure your sheet has a tab named exactly: Founder Intelligence Log\n   Columns: Timestamp | Event Type | Buyer ID | Niche | Channel | Language | Urgency | Revenue | Notes | Status\n\nEVENT TYPES HANDLED (route this webhook from other scenarios):\n  - lead: inbound call captured by Retell AI\n  - purchase: Lemon Squeezy order.created webhook\n  - refund: Lemon Squeezy order.refunded webhook\n  - subscription_start: Lemon Squeezy subscription.created webhook\n  - subscription_cancel: Lemon Squeezy subscription.cancelled webhook\n  - survey_response: Tally webhook\n\nWEBHOOK PAYLOAD SCHEMA:\n{\n  \"event_type\": \"lead|purchase|refund|subscription_start|subscription_cancel|survey_response\",\n  \"caller_name\": \"string (leads only)\",\n  \"issue_description\": \"string (leads only)\",\n  \"address\": \"string (leads only)\",\n  \"callback_number\": \"string (leads only)\",\n  \"customer_email\": \"string (purchases/refunds/subscriptions)\",\n  \"order_id\": \"string (purchases/refunds)\",\n  \"product_name\": \"string (purchases/subscriptions)\",\n  \"amount\": \"number\",\n  \"niche\": \"HVAC|Plumbing|Electrical|Landscaping|Pool|Unknown\",\n  \"channel\": \"meta_ad|organic|direct|unknown\",\n  \"language\": \"english|spanish\",\n  \"urgency\": \"emergency|standard|estimate|n/a\",\n  \"reason\": \"string (refunds/cancellations only)\",\n  \"notes\": \"string (survey responses)\"\n}\n\nNOTE: Buyer IDs are SHA-256 hashes of email addresses — never raw PII is stored."
+      }
+    ]
+  }
+}
