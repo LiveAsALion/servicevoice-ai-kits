@@ -1,0 +1,131 @@
+{
+  "name": "SVAI - Emergency Escalation",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": null,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "label": "SVAI Emergency Escalation Webhook",
+              "data": { "editable": true }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "twilio:ActionSendSms",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "from": "REPLACE_WITH_YOUR_TWILIO_NUMBER",
+        "to": "REPLACE_WITH_YOUR_PHONE_NUMBER",
+        "body": "🚨 EMERGENCY: {{1.caller_name}} at {{1.address}}. Issue: {{1.issue_description}}. Call NOW: {{1.callback_number}}"
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": -100 }
+      }
+    },
+    {
+      "id": 3,
+      "module": "twilio:ActionSendSms",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "from": "REPLACE_WITH_YOUR_TWILIO_NUMBER",
+        "to": "REPLACE_WITH_ONCALL_TECH_PHONE",
+        "body": "🚨 EMERGENCY DISPATCH: {{1.caller_name}} at {{1.address}}. {{1.issue_description}}. Customer: {{1.callback_number}}. Respond immediately."
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 50 }
+      }
+    },
+    {
+      "id": 4,
+      "module": "gmail:sendEmail",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "to": "REPLACE_WITH_YOUR_EMAIL",
+        "subject": "🚨 EMERGENCY LEAD — {{1.caller_name}} | Immediate Response Required",
+        "content": "<h1 style=\"color:red;\">🚨 EMERGENCY CALL — IMMEDIATE ACTION REQUIRED</h1><table><tr><td><strong>Name</strong></td><td>{{1.caller_name}}</td></tr><tr><td><strong>Address</strong></td><td>{{1.address}}</td></tr><tr><td><strong>Issue</strong></td><td>{{1.issue_description}}</td></tr><tr><td><strong>Callback Number</strong></td><td>{{1.callback_number}}</td></tr><tr><td><strong>Language</strong></td><td>{{1.language}}</td></tr><tr><td><strong>Priority Flag</strong></td><td>{{1.priority_flag}}</td></tr><tr><td><strong>Time Received</strong></td><td>{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}} MST</td></tr></table><hr><p><strong>SMS alerts sent to owner and on-call tech.</strong></p><p><em>Sent automatically by ServiceVoice AI</em></p>",
+        "contentType": "html",
+        "from": ""
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 200 }
+      }
+    },
+    {
+      "id": 5,
+      "module": "google-sheets:addRow",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": null,
+        "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+        "sheetId": "Leads",
+        "includesHeaders": true,
+        "valueRenderOption": "FORMATTED_VALUE",
+        "insertDataOption": "INSERT_ROWS",
+        "majorDimension": "ROWS"
+      },
+      "mapper": {
+        "Timestamp": "{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}}",
+        "Name": "{{1.caller_name}}",
+        "Address": "{{1.address}}",
+        "Issue": "{{1.issue_description}}",
+        "Urgency": "EMERGENCY",
+        "Preferred Time": "{{1.preferred_time}}",
+        "Phone": "{{1.callback_number}}",
+        "Language": "{{1.language}}",
+        "Priority Flag": "{{1.priority_flag}}",
+        "Status": "New — EMERGENCY",
+        "Notes": "⚠️ EMERGENCY — SMS alerts dispatched to owner + on-call tech"
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 100 }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com",
+    "notes": [
+      {
+        "content": "SETUP REQUIRED:\n1. Connect Twilio account (SID + Auth Token)\n2. Connect Gmail account\n3. Connect Google Sheets account\n4. Replace REPLACE_WITH_YOUR_TWILIO_NUMBER with your Twilio number (e.g. +16025551234)\n5. Replace REPLACE_WITH_YOUR_PHONE_NUMBER with your mobile number\n6. Replace REPLACE_WITH_ONCALL_TECH_PHONE with your on-call tech's number\n7. Replace REPLACE_WITH_YOUR_EMAIL with your email address\n8. Replace REPLACE_WITH_YOUR_SPREADSHEET_ID with your Google Sheets ID\n\nTRIGGER: This scenario can be triggered two ways:\n  Option A — Standalone: Configure Retell AI to call this webhook directly for emergency calls\n  Option B — From Lead Capture: The Lead Capture scenario routes emergency calls here automatically\n  Recommended: Use Option B (Lead Capture handles routing). Only use this standalone if you want a separate webhook for emergencies."
+      }
+    ]
+  }
+}
