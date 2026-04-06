@@ -44,7 +44,7 @@
       "version": 2,
       "parameters": {
         "__IMTCONN__": null,
-        "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+        "spreadsheetId": "1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s",
         "sheetId": "Leads",
         "filter": {
           "conditions": [
@@ -91,7 +91,7 @@
     "zone": "us2.make.com",
     "notes": [
       {
-        "content": "SETUP REQUIRED:\n1. Connect Twilio account\n2. Connect Google Sheets account\n3. Replace REPLACE_WITH_YOUR_TWILIO_NUMBER with your Twilio number\n4. Replace REPLACE_WITH_YOUR_BUSINESS_NAME with your business name\n5. Replace REPLACE_WITH_YOUR_BUSINESS_PHONE with your business phone number\n6. Replace REPLACE_WITH_YOUR_SPREADSHEET_ID with your Google Sheets ID\n\nEXPECTED WEBHOOK PAYLOAD (sent from Lead Capture or Retell):\n{\n  \"caller_name\": \"John Smith\",\n  \"callback_number\": \"+16025551234\",\n  \"appointment_time\": \"Tomorrow at 9:00 AM\"\n}\n\nHOW TO TRIGGER:\nThis webhook is called automatically from the Lead Capture scenario after an appointment is created in Google Calendar. You can also trigger it manually from Retell AI when a booking is confirmed during the call."
+        "content": "SETUP REQUIRED:\n1. Connect Twilio account\n2. Connect Google Sheets account\n3. Replace REPLACE_WITH_YOUR_TWILIO_NUMBER with your Twilio number\n4. Replace REPLACE_WITH_YOUR_BUSINESS_NAME with your business name\n5. Replace REPLACE_WITH_YOUR_BUSINESS_PHONE with your business phone number\n6. Replace 1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s with your Google Sheets ID\n\nEXPECTED WEBHOOK PAYLOAD (sent from Lead Capture or Retell):\n{\n  \"caller_name\": \"John Smith\",\n  \"callback_number\": \"+16025551234\",\n  \"appointment_time\": \"Tomorrow at 9:00 AM\"\n}\n\nHOW TO TRIGGER:\nThis webhook is called automatically from the Lead Capture scenario after an appointment is created in Google Calendar. You can also trigger it manually from Retell AI when a booking is confirmed during the call."
       }
     ]
   }
