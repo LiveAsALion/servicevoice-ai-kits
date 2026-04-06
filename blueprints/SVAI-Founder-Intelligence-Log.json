@@ -40,7 +40,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1o3fVsYHV3dVHA5Evz28YShCO7WiawNYd1GQsk5R3HWc",
                 "sheetId": "Founder Intelligence Log",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -85,7 +85,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1o3fVsYHV3dVHA5Evz28YShCO7WiawNYd1GQsk5R3HWc",
                 "sheetId": "Founder Intelligence Log",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -130,7 +130,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1o3fVsYHV3dVHA5Evz28YShCO7WiawNYd1GQsk5R3HWc",
                 "sheetId": "Founder Intelligence Log",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -175,7 +175,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1o3fVsYHV3dVHA5Evz28YShCO7WiawNYd1GQsk5R3HWc",
                 "sheetId": "Founder Intelligence Log",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -220,7 +220,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1o3fVsYHV3dVHA5Evz28YShCO7WiawNYd1GQsk5R3HWc",
                 "sheetId": "Founder Intelligence Log",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -265,7 +265,7 @@
               "version": 2,
               "parameters": {
                 "__IMTCONN__": null,
-                "spreadsheetId": "REPLACE_WITH_YOUR_SPREADSHEET_ID",
+                "spreadsheetId": "1o3fVsYHV3dVHA5Evz28YShCO7WiawNYd1GQsk5R3HWc",
                 "sheetId": "Founder Intelligence Log",
                 "includesHeaders": true,
                 "valueRenderOption": "FORMATTED_VALUE",
@@ -326,7 +326,7 @@
     "zone": "us2.make.com",
     "notes": [
       {
-        "content": "SETUP REQUIRED:\n1. Connect Google Sheets account\n2. Replace REPLACE_WITH_YOUR_SPREADSHEET_ID with your Google Sheets ID\n3. Ensure your sheet has a tab named exactly: Founder Intelligence Log\n   Columns: Timestamp | Event Type | Buyer ID | Niche | Channel | Language | Urgency | Revenue | Notes | Status\n\nEVENT TYPES HANDLED (route this webhook from other scenarios):\n  - lead: inbound call captured by Retell AI\n  - purchase: Lemon Squeezy order.created webhook\n  - refund: Lemon Squeezy order.refunded webhook\n  - subscription_start: Lemon Squeezy subscription.created webhook\n  - subscription_cancel: Lemon Squeezy subscription.cancelled webhook\n  - survey_response: Tally webhook\n\nWEBHOOK PAYLOAD SCHEMA:\n{\n  \"event_type\": \"lead|purchase|refund|subscription_start|subscription_cancel|survey_response\",\n  \"caller_name\": \"string (leads only)\",\n  \"issue_description\": \"string (leads only)\",\n  \"address\": \"string (leads only)\",\n  \"callback_number\": \"string (leads only)\",\n  \"customer_email\": \"string (purchases/refunds/subscriptions)\",\n  \"order_id\": \"string (purchases/refunds)\",\n  \"product_name\": \"string (purchases/subscriptions)\",\n  \"amount\": \"number\",\n  \"niche\": \"HVAC|Plumbing|Electrical|Landscaping|Pool|Unknown\",\n  \"channel\": \"meta_ad|organic|direct|unknown\",\n  \"language\": \"english|spanish\",\n  \"urgency\": \"emergency|standard|estimate|n/a\",\n  \"reason\": \"string (refunds/cancellations only)\",\n  \"notes\": \"string (survey responses)\"\n}\n\nNOTE: Buyer IDs are SHA-256 hashes of email addresses — never raw PII is stored."
+        "content": "SETUP REQUIRED:\n1. Connect Google Sheets account\n2. Replace 1o3fVsYHV3dVHA5Evz28YShCO7WiawNYd1GQsk5R3HWc with your Google Sheets ID\n3. Ensure your sheet has a tab named exactly: Founder Intelligence Log\n   Columns: Timestamp | Event Type | Buyer ID | Niche | Channel | Language | Urgency | Revenue | Notes | Status\n\nEVENT TYPES HANDLED (route this webhook from other scenarios):\n  - lead: inbound call captured by Retell AI\n  - purchase: Lemon Squeezy order.created webhook\n  - refund: Lemon Squeezy order.refunded webhook\n  - subscription_start: Lemon Squeezy subscription.created webhook\n  - subscription_cancel: Lemon Squeezy subscription.cancelled webhook\n  - survey_response: Tally webhook\n\nWEBHOOK PAYLOAD SCHEMA:\n{\n  \"event_type\": \"lead|purchase|refund|subscription_start|subscription_cancel|survey_response\",\n  \"caller_name\": \"string (leads only)\",\n  \"issue_description\": \"string (leads only)\",\n  \"address\": \"string (leads only)\",\n  \"callback_number\": \"string (leads only)\",\n  \"customer_email\": \"string (purchases/refunds/subscriptions)\",\n  \"order_id\": \"string (purchases/refunds)\",\n  \"product_name\": \"string (purchases/subscriptions)\",\n  \"amount\": \"number\",\n  \"niche\": \"HVAC|Plumbing|Electrical|Landscaping|Pool|Unknown\",\n  \"channel\": \"meta_ad|organic|direct|unknown\",\n  \"language\": \"english|spanish\",\n  \"urgency\": \"emergency|standard|estimate|n/a\",\n  \"reason\": \"string (refunds/cancellations only)\",\n  \"notes\": \"string (survey responses)\"\n}\n\nNOTE: Buyer IDs are SHA-256 hashes of email addresses — never raw PII is stored."
       }
     ]
   }
