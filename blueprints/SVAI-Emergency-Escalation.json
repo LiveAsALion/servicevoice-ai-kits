@@ -30,8 +30,8 @@
         "__IMTCONN__": null
       },
       "mapper": {
-        "from": "REPLACE_WITH_YOUR_TWILIO_NUMBER",
-        "to": "REPLACE_WITH_YOUR_PHONE_NUMBER",
+        "from": "+16025815675",
+        "to": "+16027057885",
         "body": "🚨 EMERGENCY: {{1.caller_name}} at {{1.address}}. Issue: {{1.issue_description}}. Call NOW: {{1.callback_number}}"
       },
       "metadata": {
@@ -46,8 +46,8 @@
         "__IMTCONN__": null
       },
       "mapper": {
-        "from": "REPLACE_WITH_YOUR_TWILIO_NUMBER",
-        "to": "REPLACE_WITH_ONCALL_TECH_PHONE",
+        "from": "+16025815675",
+        "to": "+16027057885",
         "body": "🚨 EMERGENCY DISPATCH: {{1.caller_name}} at {{1.address}}. {{1.issue_description}}. Customer: {{1.callback_number}}. Respond immediately."
       },
       "metadata": {
@@ -62,7 +62,7 @@
         "__IMTCONN__": null
       },
       "mapper": {
-        "to": "REPLACE_WITH_YOUR_EMAIL",
+        "to": "ServiceVoiceAI@gmail.com",
         "subject": "🚨 EMERGENCY LEAD — {{1.caller_name}} | Immediate Response Required",
         "content": "<h1 style=\"color:red;\">🚨 EMERGENCY CALL — IMMEDIATE ACTION REQUIRED</h1><table><tr><td><strong>Name</strong></td><td>{{1.caller_name}}</td></tr><tr><td><strong>Address</strong></td><td>{{1.address}}</td></tr><tr><td><strong>Issue</strong></td><td>{{1.issue_description}}</td></tr><tr><td><strong>Callback Number</strong></td><td>{{1.callback_number}}</td></tr><tr><td><strong>Language</strong></td><td>{{1.language}}</td></tr><tr><td><strong>Priority Flag</strong></td><td>{{1.priority_flag}}</td></tr><tr><td><strong>Time Received</strong></td><td>{{formatDate(now; \"MM/DD/YYYY HH:mm\"; \"America/Phoenix\")}} MST</td></tr></table><hr><p><strong>SMS alerts sent to owner and on-call tech.</strong></p><p><em>Sent automatically by ServiceVoice AI</em></p>",
         "contentType": "html",
@@ -124,7 +124,7 @@
     "zone": "us2.make.com",
     "notes": [
       {
-        "content": "SETUP REQUIRED:\n1. Connect Twilio account (SID + Auth Token)\n2. Connect Gmail account\n3. Connect Google Sheets account\n4. Replace REPLACE_WITH_YOUR_TWILIO_NUMBER with your Twilio number (e.g. +16025551234)\n5. Replace REPLACE_WITH_YOUR_PHONE_NUMBER with your mobile number\n6. Replace REPLACE_WITH_ONCALL_TECH_PHONE with your on-call tech's number\n7. Replace REPLACE_WITH_YOUR_EMAIL with your email address\n8. Replace 1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s with your Google Sheets ID\n\nTRIGGER: This scenario can be triggered two ways:\n  Option A — Standalone: Configure Retell AI to call this webhook directly for emergency calls\n  Option B — From Lead Capture: The Lead Capture scenario routes emergency calls here automatically\n  Recommended: Use Option B (Lead Capture handles routing). Only use this standalone if you want a separate webhook for emergencies."
+        "content": "SETUP REQUIRED:\n1. Connect Twilio account (SID + Auth Token)\n2. Connect Gmail account\n3. Connect Google Sheets account\n4. Replace +16025815675 with your Twilio number (e.g. +16025551234)\n5. Replace +16027057885 with your mobile number\n6. Replace +16027057885 with your on-call tech's number\n7. Replace ServiceVoiceAI@gmail.com with your email address\n8. Replace 1gOwW0J5PHgkk9ewOEM0IG7cS-DilJN9IP7OBRAqW_8s with your Google Sheets ID\n\nTRIGGER: This scenario can be triggered two ways:\n  Option A — Standalone: Configure Retell AI to call this webhook directly for emergency calls\n  Option B — From Lead Capture: The Lead Capture scenario routes emergency calls here automatically\n  Recommended: Use Option B (Lead Capture handles routing). Only use this standalone if you want a separate webhook for emergencies."
       }
     ]
   }
