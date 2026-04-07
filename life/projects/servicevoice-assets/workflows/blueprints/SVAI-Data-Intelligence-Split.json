@@ -1,0 +1,247 @@
+{
+  "name": "SVAI - Data Intelligence Split",
+  "description": "Receives post-call webhook from Retell. Extracts computed fields (zip, area code, call timing, repeat caller detection). Routes full PII record to buyer Google Sheet. Routes anonymized aggregate record to ServiceVoice AI master intelligence sheet. Inactive until first sale.",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": null,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "label": "SVAI Data Intelligence Webhook",
+              "data": { "editable": true }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "builtin:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "zip_code",
+            "value": "{{if(contains(1.call_analysis.address, ' '), last(split(trim(1.call_analysis.address), ' ')), 'unknown')}}"
+          },
+          {
+            "name": "area_code",
+            "value": "{{if(length(1.call_analysis.callback_number) >= 3, substring(replace(replace(1.call_analysis.callback_number, '+1', ''), '-', ''), 0, 3), 'unknown')}}"
+          },
+          {
+            "name": "call_hour",
+            "value": "{{formatDate(now, 'H')}}"
+          },
+          {
+            "name": "call_day_of_week",
+            "value": "{{formatDate(now, 'dddd')}}"
+          },
+          {
+            "name": "season",
+            "value": "{{if(and(formatDate(now, 'M') >= 5, formatDate(now, 'M') <= 6), 'spring', if(and(formatDate(now, 'M') >= 7, formatDate(now, 'M') <= 9), 'monsoon_summer', if(or(formatDate(now, 'M') = 10, formatDate(now, 'M') = 11), 'fall', 'winter')))}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 0 }
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-sheets:searchRows",
+      "version": 4,
+      "parameters": {},
+      "mapper": {
+        "spreadsheetId": "BUYER_SHEET_ID",
+        "sheetId": "Leads",
+        "filter": {
+          "conditions": [
+            {
+              "a": "{{1.call_analysis.callback_number}}",
+              "b": "callback_number",
+              "o": "text:equal"
+            }
+          ],
+          "operator": "AND"
+        },
+        "limit": 5,
+        "sortOrder": "DESCENDING"
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 0 },
+        "comment": "Check if this phone number has called before — repeat caller detection"
+      }
+    },
+    {
+      "id": 4,
+      "module": "builtin:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "repeat_caller",
+            "value": "{{if(3.total > 0, 'true', 'false')}}"
+          },
+          {
+            "name": "repeat_issue",
+            "value": "{{if(and(3.total > 0, contains(toLower(3.first.issue_description), first(split(toLower(1.call_analysis.issue_description), ' ')))), 'true', 'false')}}"
+          },
+          {
+            "name": "days_since_last_call",
+            "value": "{{if(3.total > 0, round(dateDifference(parseDate(3.first.timestamp, 'YYYY-MM-DD'), now, 'days')), 0)}}"
+          },
+          {
+            "name": "calls_to_book",
+            "value": "{{if(and(3.total > 0, 1.call_analysis.appointment_booked = 'true'), add(3.total, 1), 1)}}"
+          },
+          {
+            "name": "days_to_booking",
+            "value": "{{if(and(3.total > 0, 1.call_analysis.appointment_booked = 'true'), round(dateDifference(parseDate(3.first.timestamp, 'YYYY-MM-DD'), now, 'days')), 0)}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": 0 }
+      }
+    },
+    {
+      "id": 5,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "parameters": {},
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 1200, "y": 0 },
+        "comment": "Split: Route 1 = Full PII record to buyer sheet. Route 2 = Anonymized record to SVAI master sheet."
+      },
+      "routes": [
+        {
+          "flow": [
+            {
+              "id": 6,
+              "module": "google-sheets:addRow",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "spreadsheetId": "BUYER_SHEET_ID",
+                "sheetId": "Leads",
+                "values": {
+                  "timestamp": "{{formatDate(now, 'YYYY-MM-DD HH:mm:ss')}}",
+                  "caller_name": "{{1.call_analysis.caller_name}}",
+                  "address": "{{1.call_analysis.address}}",
+                  "callback_number": "{{1.call_analysis.callback_number}}",
+                  "issue_description": "{{1.call_analysis.issue_description}}",
+                  "urgency": "{{1.call_analysis.urgency}}",
+                  "preferred_time": "{{1.call_analysis.preferred_time}}",
+                  "language": "{{1.call_analysis.language}}",
+                  "priority_flag": "{{1.call_analysis.priority_flag}}",
+                  "niche": "{{1.call_analysis.niche}}",
+                  "call_outcome": "{{1.call_analysis.call_outcome}}",
+                  "appointment_booked": "{{1.call_analysis.appointment_booked}}",
+                  "appointment_outcome": "pending",
+                  "unhandled_intent": "{{1.call_analysis.unhandled_intent}}",
+                  "competitor_mentioned": "{{1.call_analysis.competitor_mentioned}}",
+                  "price_asked": "{{1.call_analysis.price_asked}}",
+                  "booking_resistance": "{{1.call_analysis.booking_resistance}}",
+                  "zip_code": "{{2.zip_code}}",
+                  "area_code": "{{2.area_code}}",
+                  "call_hour": "{{2.call_hour}}",
+                  "call_day_of_week": "{{2.call_day_of_week}}",
+                  "season": "{{2.season}}",
+                  "repeat_caller": "{{4.repeat_caller}}",
+                  "repeat_issue": "{{4.repeat_issue}}",
+                  "days_since_last_call": "{{4.days_since_last_call}}",
+                  "calls_to_book": "{{4.calls_to_book}}",
+                  "days_to_booking": "{{4.days_to_booking}}",
+                  "call_duration_seconds": "{{1.call_duration_ms / 1000}}",
+                  "satisfaction_score": "",
+                  "job_value": ""
+                }
+              },
+              "metadata": {
+                "designer": { "x": 1500, "y": -150 },
+                "comment": "BUYER SHEET — Full PII record. All 27 fields."
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 7,
+              "module": "google-sheets:addRow",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "spreadsheetId": "SVAI_MASTER_SHEET_ID",
+                "sheetId": "Aggregate",
+                "values": {
+                  "timestamp": "{{formatDate(now, 'YYYY-MM-DD HH:mm:ss')}}",
+                  "issue_description": "{{1.call_analysis.issue_description}}",
+                  "urgency": "{{1.call_analysis.urgency}}",
+                  "preferred_time": "{{1.call_analysis.preferred_time}}",
+                  "language": "{{1.call_analysis.language}}",
+                  "priority_flag": "{{1.call_analysis.priority_flag}}",
+                  "niche": "{{1.call_analysis.niche}}",
+                  "call_outcome": "{{1.call_analysis.call_outcome}}",
+                  "appointment_booked": "{{1.call_analysis.appointment_booked}}",
+                  "unhandled_intent": "{{1.call_analysis.unhandled_intent}}",
+                  "competitor_mentioned": "{{1.call_analysis.competitor_mentioned}}",
+                  "price_asked": "{{1.call_analysis.price_asked}}",
+                  "booking_resistance": "{{1.call_analysis.booking_resistance}}",
+                  "zip_code": "{{2.zip_code}}",
+                  "area_code": "{{2.area_code}}",
+                  "call_hour": "{{2.call_hour}}",
+                  "call_day_of_week": "{{2.call_day_of_week}}",
+                  "season": "{{2.season}}",
+                  "repeat_caller": "{{4.repeat_caller}}",
+                  "repeat_issue": "{{4.repeat_issue}}",
+                  "days_since_last_call": "{{4.days_since_last_call}}",
+                  "calls_to_book": "{{4.calls_to_book}}",
+                  "days_to_booking": "{{4.days_to_booking}}",
+                  "call_duration_seconds": "{{1.call_duration_ms / 1000}}",
+                  "satisfaction_score": "",
+                  "job_value": ""
+                }
+              },
+              "metadata": {
+                "designer": { "x": 1500, "y": 150 },
+                "comment": "SVAI MASTER SHEET — Anonymized. No caller_name, address, callback_number. All 24 non-PII fields."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com"
+  }
+}

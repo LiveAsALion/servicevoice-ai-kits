@@ -1,0 +1,224 @@
+{
+  "name": "SVAI - Post-Service SMS Loop",
+  "description": "Triggered when buyer confirms appointment fulfilled. Sends satisfaction SMS to customer via Twilio. Captures rating reply (1-5), optional job value, and Google review prompt. Routes satisfied customers (4-5) to Google review. Routes dissatisfied (1-2) to churn alert. Updates buyer sheet with outcome data. Inactive until first sale.",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": null,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "label": "SVAI Post-Service Trigger",
+              "data": { "editable": true }
+            }
+          }
+        },
+        "comment": "Triggered by buyer — either via Make.com button in their sheet or a simple form submission confirming job fulfilled. Payload: customer_phone, customer_name, row_id (to update), job_value (optional), google_review_link"
+      }
+    },
+    {
+      "id": 2,
+      "module": "twilio:SendSMS",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "from": "BUYER_TWILIO_NUMBER",
+        "to": "{{1.customer_phone}}",
+        "body": "Hi {{1.customer_name}}, this is [Company Name]. Thanks for choosing us today! How did we do? Reply with a number from 1 to 5. 5 means excellent, 1 means we need to improve. We read every reply."
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 0 },
+        "comment": "Send satisfaction SMS. Buyer must supply Twilio SID + Auth Token + phone number."
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-sheets:updateRow",
+      "version": 4,
+      "parameters": {},
+      "mapper": {
+        "spreadsheetId": "BUYER_SHEET_ID",
+        "sheetId": "Leads",
+        "rowNumber": "{{1.row_id}}",
+        "values": {
+          "appointment_outcome": "fulfilled",
+          "job_value": "{{1.job_value}}",
+          "sms_sent": "true",
+          "sms_sent_timestamp": "{{formatDate(now, 'YYYY-MM-DD HH:mm:ss')}}"
+        }
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 0 }
+      }
+    },
+    {
+      "id": 4,
+      "module": "twilio:TriggerNewMessage",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "from": "BUYER_TWILIO_NUMBER",
+        "timeout": 86400
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": 0 },
+        "comment": "Wait up to 24 hours for customer SMS reply with rating"
+      }
+    },
+    {
+      "id": 5,
+      "module": "builtin:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "rating",
+            "value": "{{toNumber(trim(4.body))}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": { "x": 1200, "y": 0 }
+      }
+    },
+    {
+      "id": 6,
+      "module": "google-sheets:updateRow",
+      "version": 4,
+      "parameters": {},
+      "mapper": {
+        "spreadsheetId": "BUYER_SHEET_ID",
+        "sheetId": "Leads",
+        "rowNumber": "{{1.row_id}}",
+        "values": {
+          "satisfaction_score": "{{5.rating}}"
+        }
+      },
+      "metadata": {
+        "designer": { "x": 1500, "y": 0 },
+        "comment": "Write satisfaction score to buyer sheet"
+      }
+    },
+    {
+      "id": 7,
+      "module": "google-sheets:updateRow",
+      "version": 4,
+      "parameters": {},
+      "mapper": {
+        "spreadsheetId": "SVAI_MASTER_SHEET_ID",
+        "sheetId": "Aggregate",
+        "filter": "PLACEHOLDER_ROW_MATCH",
+        "values": {
+          "satisfaction_score": "{{5.rating}}",
+          "appointment_outcome": "fulfilled",
+          "job_value": "{{1.job_value}}"
+        }
+      },
+      "metadata": {
+        "designer": { "x": 1500, "y": 150 },
+        "comment": "Update SVAI master sheet with satisfaction + job value (no PII)"
+      }
+    },
+    {
+      "id": 8,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "parameters": {},
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 1800, "y": 0 },
+        "comment": "Route by rating: 4-5 = Google review prompt. 1-2 = churn alert to buyer. 3 = neutral, no action."
+      },
+      "routes": [
+        {
+          "label": "Happy (4-5)",
+          "filter": {
+            "name": "Rating 4 or 5",
+            "conditions": [
+              {
+                "a": "{{5.rating}}",
+                "b": "4",
+                "o": "number:greaterThanOrEqualTo"
+              }
+            ]
+          },
+          "flow": [
+            {
+              "id": 9,
+              "module": "twilio:SendSMS",
+              "version": 1,
+              "parameters": {},
+              "mapper": {
+                "from": "BUYER_TWILIO_NUMBER",
+                "to": "{{1.customer_phone}}",
+                "body": "So glad to hear it! If you have a moment, a Google review would mean a lot to us and helps other homeowners find us. Here's the link: {{1.google_review_link}} — Thank you!"
+              },
+              "metadata": {
+                "designer": { "x": 2100, "y": -150 },
+                "comment": "Google review prompt — only sent to 4-5 ratings"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Unhappy (1-2)",
+          "filter": {
+            "name": "Rating 1 or 2",
+            "conditions": [
+              {
+                "a": "{{5.rating}}",
+                "b": "3",
+                "o": "number:lessThan"
+              }
+            ]
+          },
+          "flow": [
+            {
+              "id": 10,
+              "module": "twilio:SendSMS",
+              "version": 1,
+              "parameters": {},
+              "mapper": {
+                "from": "BUYER_TWILIO_NUMBER",
+                "to": "BUYER_OWNER_PHONE",
+                "body": "⚠️ CHURN ALERT: Customer {{1.customer_name}} rated their service {{5.rating}}/5. Call them back ASAP to resolve. Phone: {{1.customer_phone}}"
+              },
+              "metadata": {
+                "designer": { "x": 2100, "y": 150 },
+                "comment": "Churn alert SMS to business owner — immediate action required"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com"
+  }
+}
